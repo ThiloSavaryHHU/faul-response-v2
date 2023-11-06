@@ -76,7 +76,6 @@ function responseToGenerativeOptions(response: ResponseDataGenerativeOptions): G
       value: key,
       label: value.label,
       text: value.text,
-      points: value?.points ?? undefined
     })
     return acc
   }, [] as Array<GenerativeOption>);

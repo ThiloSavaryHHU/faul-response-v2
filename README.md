@@ -1,46 +1,95 @@
 # faul-response-v2
 
-This template should help get you started developing with Vue 3 in Vite.
+A small, unfinished and uncleanly programmed tool to make my work as a corrector easier.
+Grown over time and developed for personal use only.
 
-## Recommended IDE Setup
+## Installation
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Via source code
 
-## Type Support for `.vue` Imports in TS
+**Requirements:**
+- Node.js
+- npm
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+1. clone repository
+2. execute `npm install`
+3. execute `npm dev`
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+This will start a local server that can be reached at `http://localhost:5173/`.[dist.zip](dist.zip)
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### Via release
 
-## Customize configuration
+**Requirements:**
+- Any web server (e.g. Apache, php)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+1. download release
+2. unpack
+3. start web server
 
-## Project Setup
-
-```sh
-npm install
+With php:
+```bash
+cd /path/to/unpacked/release
+php -S localhost:5173 -t
 ```
 
-### Compile and Hot-Reload for Development
+With Apache:
 
-```sh
-npm run dev
+- Copy files to the web server folder
+- Start server
+
+## Usage
+
+The templates for generating responses are defined in `responses.json`.
+The file can be customized for your own purposes.
+
+The following structure is absolutely necessary:
+```json
+{
+  "quality": {
+    "options": {}
+  },
+  "taskErrors": {
+    "intro": "",
+    "options": {}
+  },
+  "syntaxErrors": {
+  "intro": "",
+    "options": {}
+  },
+  "extra": {
+    "intro": "",
+    "options": {}
+  }
+}
 ```
 
-### Type-Check, Compile and Minify for Production
+The `intro` field contains text that precedes the section in the generated response. This parameter is optional and can be omitted.
 
-```sh
-npm run build
+The `options` field then contains the options that are used to generate the response:
+
+```json
+{
+  "options": {
+    "good1": {
+      "label": "Good",
+      "text": "Everything is correct!"
+    },
+    "good2": {
+      "label": "Good (Simple)",
+      "text": [
+        "Everything correct!",
+        "Very good!"
+      ]
+    }
+  }
+}
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+The key of the options (here: `good1` and `good2`) can be freely selected, but must be unique.
+The `label` is the text that is displayed in the UI (i.e. next to the checkboxes/radio buttons).
+`text` is used to generate the response text. This can be a string or an array of strings. In the latter case, a random string is selected from the array.
 
-```sh
-npm run lint
-```
+The file can be found in the following folder:
+
+- *Use via source code:* `public/responses.json`
+- *Use via release:* `responses.json`
