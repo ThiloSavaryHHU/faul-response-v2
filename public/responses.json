@@ -1,0 +1,118 @@
+{
+  "quality": {
+    "options": {
+      "good1": {
+        "label": "Gut",
+        "text": [
+          "Sehr gute Abgabe. Weiter so!",
+          "Schöne Lösung, gefällt mir!",
+          "Gute Lösung, weiter so!"
+        ]
+      },
+      "good2": {
+        "label": "Gut (Simpel)",
+        "text": [
+          "Alles richtig!"
+        ]
+      },
+      "goodWithErrors": {
+        "label": "Gut mit kleinen Fehlern",
+        "text": "Gut gemacht, allerdings haben sich noch ein paar Fehler eingeschlichen:"
+      },
+      "bad": {
+        "label": "Schlecht/Musterlösung",
+        "text": "Guter Ansatz, aber das ist noch nicht ganz richtig. Am besten guckst du mal in die Musterlösung und/oder besuchst das Tutorium. Wenn du nicht weiterkommst, zögere nicht, uns zu fragen."
+      },
+      "wrongFileName": {
+        "label": "Dateiname falsch",
+        "text": "Schade, leider hast du deine Datei falsch benannt, sie sollte [Dateiname] heißen. Deshalb gibt es für diese Abgabe keine Punkte. Achte das nächste mal darauf, dass die Tests durchlaufen."
+      },
+      "wrongClassName": {
+        "label": "Klassennamen falsch",
+        "text": "Leider hast du deine Klasse falsch benannt, der Name muss exakt wie auf dem Übungsblatt sein. Deshalb gibt es für diese Abgabe keine Punkte. Achte das nächste mal darauf, dass die Tests durchlaufen."
+      },
+      "noFiles": {
+        "label": "Leere Abgabe",
+        "text": "Schade, nichts abgegeben."
+      }
+    }
+  },
+  "taskErrors": {
+    "options": {
+      "keineGleichverteilung": {
+        "label": "Keine Gleichverteilung",
+        "text": "- Deine Lösung funktioniert, die Ergebnisse haben aber nicht die gleiche Wahrscheinlichkeit. Falls du sehen willst wie das möglich ist, guck vielleicht mal in die Musterlösung."
+      }
+    }
+  },
+  "syntaxErrors": {
+    "intro": "Zur Syntax:",
+    "options": {
+      "indent": {
+        "label": "Einrückung fehlerhaft",
+        "text": "- Achte auf die Einrückung, damit der Code lesbar wird. (siehe Vorlesung 1)"
+      },
+      "badVariableName": {
+        "label": "Variable unschön benannt",
+        "text": "- Achte auf deine Variablen/Methodenbezeichnungen, damit klar ist, was sie speichern/machen.\n a, foo, tmp sind beispielsweise keine guten Namen."
+      },
+      "ifWhileForInline": {
+        "label": "if/while/for/else inline",
+        "text": "- Bitte nutze keine Einzeiler für if/while/for/else Blöcke. Wir wollen eine Anweisung pro Zeile (mit ganz speziellen Ausnahmen) schreiben."
+      },
+      "ifWhileForWithoutBraces": {
+        "label": "if/while/for/else ohne Klammern",
+        "text": "- Bitte nutze nach if/while/for/else immer die `{ }` Klammern."
+      },
+      "toManyBlankLines": {
+        "label": "Zu viele Leerzeilen",
+        "text": "- Du hast ein paar viele Leerzeilen verwendet."
+      },
+      "noBlankLines": {
+        "label": "Keine Leerzeilen",
+        "text": "- Du hast keine Leerzeilen verwendet. Mit Leerzeilen kannst du logische Blöcke voneinander trennen, das macht den Code leichter lesbar."
+      },
+      "wrongCasing": {
+        "label": "Falsche Groß-/Kleinschreibung",
+        "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen werden in lowerCamelCase geschrieben. (s. Vorlesungsfolien 2)"
+      }
+    }
+  },
+  "extra": {
+    "intro": "Weitere Anmerkung(en):",
+    "options": {
+      "system.exit": {
+        "label": "System.exit",
+        "text": "- Bitte kein `System.exit()` nutzen, unsere Tests mögen das nicht."
+      },
+      "misleadingErrorMessages": {
+        "label": "Irreführende Fehlermeldungen",
+        "text": "- Bitte achte darauf, dass deine Fehlermeldungen nicht \"falsch\" sind. Wenn du beispielsweise auf `args.length != 1` prüfst, deine Fehlermeldung aber *\"ERROR: Keine Argumente übergeben\"* lautet, bekommt der Nutzer die Fehlermeldung auch, wenn er 2 oder mehr Argumente übergibt. Das ist irreführend."
+      },
+      "blaError": {
+        "label": "Nichts aussagende Fehlermeldung",
+        "text": "- Bitte achte darauf, dass deine Fehlermeldungen etwas aussagen. Wenn du beispielsweise auf `args.length != 1` prüfst, deine Fehlermeldung aber *\"ERROR: Error\"* lautet, weiß der Nutzer nicht, was er falsch gemacht hat. (Ja, das mag nervig sein, aber es ist wichtig, das direkt zu üben und sich zu verinnerlichen.)"
+      },
+      "errorElseNester": {
+        "label": "Fehler verschachtelt (mit else)",
+        "text": "- Bitte beende dein Programm bei der Überprüfung der Nutzereingabe bei fehlerhafter Eingabe mit einem `return` und verwende keinen else Block für den eigentlichen Code. Bei vielen Fehlerüberprüfungen kann es sonst passieren, dass du ganz viele `else` Blöcke hast und der eigentliche Code ganz weit eingerückt ist. Also aus \n\n ```java\n if(args.length != 1){\n    ...\n} else {\n    // Der eigentliche Code\n}\n```\n\n wird \n\n```java\nif(args.length != 1){\n    ...\n    return;\n}\n// Der eigentliche Code\n```"
+      },
+      "stupidErrorElseNester": {
+        "label": "Fehler verschachtelt (mit else) - trotz return",
+        "text": "- Wenn du in der Fehlerüberprüfung `return` verwendest, kannst du den eigentlichen Code auch ohne `else` schreiben. Also aus \n\n ```java\n if(args.length != 1){\n    ...\n    return;\n}\nelse {\n    // Der eigentliche Code\n}\n```\n\n wird \n\n```java\nif(args.length != 1){\n    ...\n    return;\n}\n// Der eigentliche Code\n```"
+      },
+      "ErrorIfNester": {
+        "label": "Fehler verschachtelt (mit if)",
+        "text": "- Es ist oft sinnvoll, zuerst auf die Fehler zu überprüfen, und dann den eigentlichen Code auszuführen. Sonst kann es bei vielen Fehlerüberprüfungen passieren, dass du ganz viele verschachtelte if Blöcke hast und der eigentliche Code ganz weit eingerückt ist. Also aus \n\n ```java\n if(args.length > 0){\n    // Der eigentliche Code\n} else {\n    //Fehlermeldung\n}\n```\n\n wird \n\n```java\nif(args.length == 0){\n    //Fehlermeldung\n    return;\n}\n// Der eigentliche Code\n```"
+      },
+      ".class": {
+        "label": ".class Datei hochgeladen",
+        "text": "- Die .class Datein brauchen wir nicht, bitte nur die .java Datei hochladen."
+      },
+      "onlyOneFile": {
+        "label": "Nur eine Datei",
+        "text": "- Lade bitte nur immer eine Datei (sofern nicht anders angegeben) hoch. Falls du mal eine falsche Datei hochlädst, lösche sie bitte wieder. [Wie das geht kannst du im Tutorial zum Abgabesystem nachlesen](https://hsp.pages.cs.uni-duesseldorf.de/programmierung/website/lectures/progra/tutorials/classroom/#falsch-hochgeladene-dateien-l%C3%B6schen)."
+      }
+    }
+  }
+}
