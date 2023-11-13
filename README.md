@@ -13,7 +13,7 @@ Grown over time and developed for personal use only.
 
 1. clone repository
 2. execute `npm install`
-3. execute `npm dev`
+3. execute `npm run dev`
 
 This will start a local server that can be reached at `http://localhost:5173/`.[dist.zip](dist.zip)
 
