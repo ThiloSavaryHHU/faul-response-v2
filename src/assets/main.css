@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media screen and (min-width: 1280px) and (min-height: 480px) {
+    .xl-screen-flex-wrap {
+        flex-wrap: wrap;
+    }
+}

@@ -172,8 +172,8 @@ watch([points, maxPoints, state], () => {
 </script>
 
 <template>
-  <div class="flex flex-col sm:flex-row gap-4 sm:justify-around w-screen h-screen bg-slate-50 p-4">
-    <div class="rounded-lg border border-slate-200 shadow-lg bg-slate-100 w-full ">
+  <div class="flex flex-col sm:flex-row gap-4 sm:justify-around w-screen h-screen bg-slate-50 p-4 overflow-y-scroll">
+    <div class="rounded-lg border border-slate-200 shadow-lg bg-slate-100 flex flex-col flex-1">
       <div class="flex flex-col md:flex-row justify-stretch p-2 gap-5">
         <StyledInput id="points" v-model="points" label="Punkte" placeholder="Punkte"
                      type="number" class="w-full"/>
@@ -186,26 +186,29 @@ watch([points, maxPoints, state], () => {
         <!--          </optgroup>-->
         <!--        </StyledSelect>-->
       </div>
-      <div class="p-2">
-        <RadioGroup :options="options.quality.options" name="quality" v-model="state.quality"
-                    title="Ingesamte Qualität"/>
-      </div>
-      <div class="p-2" v-if="options.taskErrors.options.length > 0">
-        <CheckboxGroup :options="options.taskErrors.options" name="quality" v-model="state.taskErrors"
-                       title="Aufgabenspezifische Fehler"/>
-      </div>
-      <div class="p-2">
-        <CheckboxGroup :options="options.syntaxErrors.options" name="syntaxErrors" v-model="state.syntaxErrors"
-                       title="Syntax"/>
-      </div>
-      <div class="p-2" v-if="options.extra.options.length > 0">
-        <CheckboxGroup :options="options.extra.options" name="quality" v-model="state.extra"
-                       title="Weitere Anmerkungen"/>
-      </div>
+      <div class="flex flex-col items-start min-h-0 overflow-scroll xl-screen-flex-wrap">
 
+        <div class="p-2">
+          <RadioGroup :options="options.quality.options" name="quality" v-model="state.quality"
+                      title="Ingesamte Qualität"/>
+        </div>
+        <div class="p-2" v-if="options.taskErrors.options.length > 0">
+          <CheckboxGroup :options="options.taskErrors.options" name="quality" v-model="state.taskErrors"
+                         title="Aufgabenspezifische Fehler"/>
+        </div>
+        <div class="p-2">
+          <CheckboxGroup :options="options.syntaxErrors.options" name="syntaxErrors" v-model="state.syntaxErrors"
+                         title="Syntax"/>
+        </div>
+        <div class="p-2" v-if="options.extra.options.length > 0">
+          <CheckboxGroup :options="options.extra.options" name="quality" v-model="state.extra"
+                         title="Weitere Anmerkungen"/>
+        </div>
+
+      </div>
     </div>
 
-    <div class="rounded-lg border border-slate-200 shadow-lg  bg-slate-100 w-full">
+    <div class="rounded-lg border border-slate-200 shadow-lg  bg-slate-100 flex-1 overflow-scroll ">
       <div class="p-2 flex justify-between">
         <StyledButton @click="copyTextToClipboard(text)">Kopieren</StyledButton>
         <StyledButton @click="reset()">Reset</StyledButton>
@@ -224,5 +227,6 @@ watch([points, maxPoints, state], () => {
       </div>
     </div>
   </div>
+
 </template>
 
