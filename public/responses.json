@@ -39,9 +39,9 @@
   },
   "taskErrors": {
     "options": {
-      "keineGleichverteilung": {
-        "label": "Keine Gleichverteilung",
-        "text": "- Deine Lösung funktioniert, die Ergebnisse haben aber nicht die gleiche Wahrscheinlichkeit. Falls du sehen willst wie das möglich ist, guck vielleicht mal in die Musterlösung."
+      "mapToInterval": {
+        "label": "MapToInterval",
+        "text": "- Die Eingrenzung auf das Interval [0, 2π] wäre auch mit dem Modulo Operator möglich:\n```java\nif (x < 0) {\n    x = -x;\n}\nx = x % ( * Math.PI)\n```"
       }
     }
   },
@@ -74,7 +74,15 @@
       },
       "wrongCasing": {
         "label": "Falsche Groß-/Kleinschreibung",
-        "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen werden in lowerCamelCase geschrieben. (s. Vorlesungsfolien 2)"
+        "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen und Methodennamen werden in lowerCamelCase geschrieben, Klassennamen in UpperCamelCase. (s. Vorlesungsfolien 2)"
+      },
+      "notPrivate": {
+        "label": "Methoden nicht private",
+        "text": "- Bitte verwende `private` statt `public` für Methoden, sofern es nicht anders notwendig."
+      },
+      "commentsMissing": {
+        "label": "Kommentare fehlen",
+        "text": "- Hier wäre es vielleicht sinnvoll, Kommentare zu schreiben, besonders an den schweren Stellen (wie mehreren `for` Schleifen ineinander) oder bei der Behandlung von Sonderfällen."
       }
     }
   },
@@ -112,6 +120,10 @@
       "onlyOneFile": {
         "label": "Nur eine Datei",
         "text": "- Lade bitte nur immer eine Datei (sofern nicht anders angegeben) hoch. Falls du mal eine falsche Datei hochlädst, lösche sie bitte wieder. [Wie das geht kannst du im Tutorial zum Abgabesystem nachlesen](https://hsp.pages.cs.uni-duesseldorf.de/programmierung/website/lectures/progra/tutorials/classroom/#falsch-hochgeladene-dateien-l%C3%B6schen)."
+      },
+      "noMethods": {
+        "label": "Hätte Code in Methoden auslagern können",
+        "text": "- Hier hätte es sich angeboten, Teile des Codes in eigene Methoden auszulagern. Das ist nicht notwendig, aber es ist oft sinnvoll, damit unser Code übersichtlicher wird. ([METHODENNAMEN])"
       }
     }
   }
