@@ -8,6 +8,7 @@ Grown over time and developed for personal use only.
 ### Via source code
 
 **Requirements:**
+
 - Node.js
 - npm
 
@@ -20,6 +21,7 @@ This will start a local server that can be reached at `http://localhost:5173/`.[
 ### Via release
 
 **Requirements:**
+
 - Any web server (e.g. Apache, php)
 
 1. download release
@@ -27,6 +29,7 @@ This will start a local server that can be reached at `http://localhost:5173/`.[
 3. start web server
 
 With php:
+
 ```bash
 cd /path/to/unpacked/release
 php -S localhost:5173 -t
@@ -43,6 +46,7 @@ The templates for generating responses are defined in `responses.json`.
 The file can be customized for your own purposes.
 
 The following structure is absolutely necessary:
+
 ```json
 {
   "quality": {
@@ -53,7 +57,7 @@ The following structure is absolutely necessary:
     "options": {}
   },
   "syntaxErrors": {
-  "intro": "",
+    "intro": "",
     "options": {}
   },
   "extra": {
@@ -63,7 +67,8 @@ The following structure is absolutely necessary:
 }
 ```
 
-The `intro` field contains text that precedes the section in the generated response. This parameter is optional and can be omitted.
+The `intro` field contains text that precedes the section in the generated response. This parameter is optional and can
+be omitted.
 
 The `options` field then contains the options that are used to generate the response:
 
@@ -87,9 +92,13 @@ The `options` field then contains the options that are used to generate the resp
 
 The key of the options (here: `good1` and `good2`) can be freely selected, but must be unique.
 The `label` is the text that is displayed in the UI (i.e. next to the checkboxes/radio buttons).
-`text` is used to generate the response text. This can be a string or an array of strings. In the latter case, a random string is selected from the array.
+`text` is used to generate the response text. This can be a string or an array of strings. In the latter case, a random
+string is selected from the array.
 
 The file can be found in the following folder:
 
 - *Use via source code:* `public/responses.json`
 - *Use via release:* `responses.json`
+
+The `templates` folder contains more templates. To use them, copy the contents of the file into the `responses.json`
+file.
