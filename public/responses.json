@@ -4,16 +4,25 @@
       "good1": {
         "label": "Gut",
         "text": [
-          "Sehr gute Abgabe. Weiter so!",
-          "Schöne Lösung, gefällt mir!",
-          "Gute Lösung, weiter so!"
+          "Sehr gute Abgabe. Weiter so! :)",
+          "Schöne Lösung, gefällt mir! :)",
+          "Schöne Abgabe, gefällt mir! :)",
+          "Gute Lösung, weiter so! :)",
+          "So muss das. Weiter so! :)",
+          "Prima gemacht, weiter so! :)",
+          "Gute Abgabe. Super gemacht :)"
         ]
       },
       "good2": {
         "label": "Gut (Simpel)",
         "text": [
-          "Alles richtig!"
+          "Alles richtig!",
+          "Komplett richtig!"
         ]
+      },
+      "goodWithError": {
+        "label": "Gut mit einem Fehler",
+        "text": "Gut gemacht, allerdings hat sich noch ein Fehler eingeschlichen:"
       },
       "goodWithErrors": {
         "label": "Gut mit kleinen Fehlern",
@@ -23,6 +32,10 @@
         "label": "Schlecht/Musterlösung",
         "text": "Guter Ansatz, aber das ist noch nicht ganz richtig. Am besten guckst du mal in die Musterlösung und/oder besuchst das Tutorium. Wenn du nicht weiterkommst, zögere nicht, uns zu fragen."
       },
+      "noCompile": {
+        "label": "Compiliert nicht",
+        "text": "Leider kompiliert dein Programm nicht. Am besten testest du vor der Abgabe zumindest mal, ob das Programm überhaupt kompiliert. Oft wird einem bei der Fehlermeldung auch gesagt, was man falsch gemacht hat. Ansonsten kannst du natürlich immer gerne an sämtlichen Stellen nachfragen, wenn du nicht mehr weiter kommst.\nExplizit bei dir kompiliert es nicht aufgrund [Grund angeben]"
+      },
       "wrongFileName": {
         "label": "Dateiname falsch",
         "text": "Schade, leider hast du deine Datei falsch benannt, sie sollte [Dateiname] heißen. Deshalb gibt es für diese Abgabe keine Punkte. Achte das nächste mal darauf, dass die Tests durchlaufen."
@@ -31,17 +44,48 @@
         "label": "Klassennamen falsch",
         "text": "Leider hast du deine Klasse falsch benannt, der Name muss exakt wie auf dem Übungsblatt sein. Deshalb gibt es für diese Abgabe keine Punkte. Achte das nächste mal darauf, dass die Tests durchlaufen."
       },
+      "wrongDirec": {
+        "label": "Falsches Verzeichniss",
+        "text": 
+          "Du hast leider das Programm im Falschen Ordner abgegeben, da wir feste Abgabevorschriften haben, kann ich das Programm leider nicht bewerten :("
+      },
       "noFiles": {
         "label": "Leere Abgabe",
-        "text": "Schade, nichts abgegeben."
+        "text": [
+          "Schade, nichts abgegeben :(",
+          "Es wurde leider nichts abgegeben :("]
       }
     }
   },
   "taskErrors": {
     "options": {
-      "mapToInterval": {
-        "label": "MapToInterval",
+      "cosinusMapToInterval": {
+        "label": "Cosinus: MapToInterval",
         "text": "- Die Eingrenzung auf das Interval [0, 2π] wäre auch mit dem Modulo Operator möglich:\n```java\nif (x < 0) {\n    x = -x;\n}\nx = x % ( * Math.PI)\n```"
+      },
+      "vokabelnToCharArray": {
+        "label": "Vokabeln: toCharArray()",
+        "text": "Es gibt in Java selbst eine Methode namens `toCharArray()`. Diese kann man auf einem String aufrufen, wenn man diesen als `char[]` haben will. Solche Abkürzungen sich zu suchen ist immer ganz praktisch, da man sich so viel Zeit spart.\nWeiteres dazu gibts hier: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/String.html#toCharArray()"
+      },
+      "vokabelnNoGarantyMix": {
+        "label": "Vokabeln: Keine Mixed - Garantie",
+        "text": "Deine Vokabeln werden zwar durchgemixt, jedoch kann es bei dir vorkommen, dass die Vokabeln wieder zufällig in der richtigen Reihenfolge auftauchen. Das sollte nicht passieren. Da am besten nochmal zum Schluss überprüfen, ob du wieder das richtige Wort raus hast und wenn ja dann nochmal neu shufflen"
+      },
+      "lottoKeineGleichverteilung": {
+        "label": "Lotto: Keine Gleichverteilung",
+        "text": "Deine Lösung funktioniert, die Ergebnisse haben aber nicht die gleiche Wahrscheinlichkeit. Falls du sehen willst wie das möglich ist, guck vielleicht mal in die Musterlösung."
+      },
+      "kniffelWrongDiceLogic": {
+        "label": "Kniffel: Falsche Logik",
+        "text": "Du hast leider ein Logikfehler bei der Berechnung von [Methode/n] gemacht: "
+      },
+      "kniffelWrongDiceLogicStraight": {
+        "label": "Kniffel: Falsche Logik (Straße)",
+        "text": "Du hast leider ein Logikfehler bei der Berechnung der kleinen/großen gemacht: "
+      },
+      "shipNicePic": {
+        "label": "Ship: Schönes Bild",
+        "text": "Ein sehr kreatives Bild, find ich schön :)"
       }
     }
   },
@@ -50,7 +94,7 @@
     "options": {
       "indent": {
         "label": "Einrückung fehlerhaft",
-        "text": "- Achte auf die Einrückung, damit der Code lesbar wird. (siehe Vorlesung 1)"
+        "text": "- Achte bitte auf die Einrückung, damit der Code lesbar wird. (siehe Vorlesung 1)"
       },
       "badVariableName": {
         "label": "Variable unschön benannt",
@@ -74,15 +118,11 @@
       },
       "wrongCasing": {
         "label": "Falsche Groß-/Kleinschreibung",
-        "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen und Methodennamen werden in lowerCamelCase geschrieben, Klassennamen in UpperCamelCase. (s. Vorlesungsfolien 2)"
+        "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen werden in lowerCamelCase geschrieben. (s. Vorlesungsfolien 2)"
       },
-      "notPrivate": {
-        "label": "Methoden nicht private",
-        "text": "- Bitte verwende `private` statt `public` für Methoden, sofern es nicht anders notwendig."
-      },
-      "commentsMissing": {
-        "label": "Kommentare fehlen",
-        "text": "- Hier wäre es vielleicht sinnvoll, Kommentare zu schreiben, besonders an den schweren Stellen (wie mehreren `for` Schleifen ineinander) oder bei der Behandlung von Sonderfällen."
+      "wrongFormat": {
+        "label": "Falsches Ausgabeformat",
+        "text": "- Leider hast du dich nicht an das Ausgabeformat gehalten. So laufen unsere Tests nicht durch. Auch wenn es an manchen Stellen hier etwas banal klingt ist es vor allem später unglaublich wichtig sich wirklich an die Vorgaben zu halten, wie ein Programm Dinge aus und zurück gibt. Allerspätestens wenn man mit mehreren Personen arbeitet."
       }
     }
   },
@@ -120,10 +160,6 @@
       "onlyOneFile": {
         "label": "Nur eine Datei",
         "text": "- Lade bitte nur immer eine Datei (sofern nicht anders angegeben) hoch. Falls du mal eine falsche Datei hochlädst, lösche sie bitte wieder. [Wie das geht kannst du im Tutorial zum Abgabesystem nachlesen](https://hsp.pages.cs.uni-duesseldorf.de/programmierung/website/lectures/progra/tutorials/classroom/#falsch-hochgeladene-dateien-l%C3%B6schen)."
-      },
-      "noMethods": {
-        "label": "Hätte Code in Methoden auslagern können",
-        "text": "- Hier hätte es sich angeboten, Teile des Codes in eigene Methoden auszulagern. Das ist nicht notwendig, aber es ist oft sinnvoll, damit unser Code übersichtlicher wird. ([METHODENNAMEN])"
       }
     }
   }
