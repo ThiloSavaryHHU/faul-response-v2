@@ -12,7 +12,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <div>
+  <div class="w-full">
     <label for="{{id}}" class="block mb-2 text-sm font-medium text-gray-900">{{ label }}</label>
     <select :required="required"
             :id="id"

@@ -3,9 +3,10 @@ import StyledInput from '@/components/StyledInput.vue';
 import {reactive, ref, watch} from 'vue';
 import RadioGroup from '@/components/RadioGroup.vue';
 import CheckboxGroup from '@/components/CheckboxGroup.vue';
-import type {GenerativeOption, GenerativeSection, GenerativeSettings} from '@/types';
+import type {GenerativeOption, GenerativeSection, GenerativeSettings, GenerativeTaskOption} from '@/types';
 import StyledButton from '@/components/StyledButton.vue';
 import StyledCheckbox from '@/components/StyledCheckbox.vue';
+import StyledSelect from '@/components/StyledSelect.vue';
 
 type State = {
   quality: string;
@@ -20,6 +21,9 @@ const urlState = JSON.parse(url.searchParams.get('state') ?? '{}');
 
 const points = ref(url.searchParams.get('points') ?? 1);
 const maxPoints = ref(url.searchParams.get('maxPoints') ?? 1);
+
+const tasks = ref<String[]>([])
+const task = ref(url.searchParams.get('task') ?? '---')
 
 console.debug(urlState)
 
@@ -53,6 +57,7 @@ type ResponseDataGenerativeOptions = {
 }
 
 type ResponseData = {
+  tasks: string[],
   quality: {
     options: ResponseDataGenerativeOptions
   },
@@ -81,13 +86,28 @@ function responseToGenerativeOptions(response: ResponseDataGenerativeOptions): G
   }, [] as Array<GenerativeOption>);
 }
 
+function responseToGenerativeTaskOptions(response: ResponseDataGenerativeOptions): GenerativeTaskOption[] {
+  return Object.entries(response).reduce((acc, [key, value]) => {
+    acc.push({
+      value: key,
+      label: value.label,
+      text: value.text,
+      task: value.task,
+    })
+    return acc
+  }, [] as Array<GenerativeTaskOption>);
+}
+
 fetch('/responses.json').then((response) => {
   response.json().then((data) => data as ResponseData).then((data) => {
+    console.debug(data)
+    tasks.value = ['---'].concat(data.tasks);
+
     options.quality.options = responseToGenerativeOptions(data.quality.options);
     if (options.quality.options.length > 0 && state.quality === '') {
       state.quality = options.quality.options[0].value;
     }
-    options.taskErrors.options = responseToGenerativeOptions(data.taskErrors.options);
+    options.taskErrors.options = responseToGenerativeTaskOptions(data.taskErrors.options);
     options.taskErrors.intro = data.taskErrors.intro;
     options.syntaxErrors.options = responseToGenerativeOptions(data.syntaxErrors.options);
     options.syntaxErrors.intro = data.syntaxErrors.intro;
@@ -153,18 +173,27 @@ function reset(): void {
   state.extra = [];
 }
 
+function filterTaskOptions(options: GenerativeTaskOption[], task: string): GenerativeTaskOption[] {
+  return options.filter((option) => option.task === task);
+}
+
+watch([task], () => {
+  reset();
+})
+
 watch([points, maxPoints, state], () => {
   if (!canEdit.value) {
     generateText();
   }
 })
 
-watch([points, maxPoints, state], () => {
+watch([points, maxPoints, state, task], () => {
   const stateEncoded = JSON.stringify(state);
   const url = new URL(window.location.href);
   url.searchParams.set('state', stateEncoded);
   url.searchParams.set('points', points.value.toString());
   url.searchParams.set('maxPoints', maxPoints.value.toString());
+  url.searchParams.set('task', task.value.toString());
   window.history.replaceState({}, '', url.toString());
 })
 
@@ -179,6 +208,9 @@ watch([points, maxPoints, state], () => {
                      type="number" class="w-full"/>
         <StyledInput id="maxPoints" v-model="maxPoints" label="Max Punkte" placeholder="Max Punkte"
                      type="number" class="w-full"/>
+        <StyledSelect id="task" v-model="task" v-if="tasks.length > 0" label="Aufgabe">
+          <option v-for="t in tasks" :value="t" :key="t">{{ t }}</option>
+        </StyledSelect>
         <!--        <StyledSelect id="task" v-model="task" label="Aufgabe" class="w-full">-->
         <!--          <optgroup label="Blatt 1">-->
         <!--            <option value="1.1">Aufgabe 1</option>-->
@@ -192,8 +224,8 @@ watch([points, maxPoints, state], () => {
           <RadioGroup :options="options.quality.options" name="quality" v-model="state.quality"
                       title="Ingesamte Qualität"/>
         </div>
-        <div class="p-2" v-if="options.taskErrors.options.length > 0">
-          <CheckboxGroup :options="options.taskErrors.options" name="quality" v-model="state.taskErrors"
+        <div class="p-2" v-if="filterTaskOptions(options.taskErrors.options, task).length > 0">
+          <CheckboxGroup :options="filterTaskOptions(options.taskErrors.options, task)" name="quality" v-model="state.taskErrors"
                          title="Aufgabenspezifische Fehler"/>
         </div>
         <div class="p-2">

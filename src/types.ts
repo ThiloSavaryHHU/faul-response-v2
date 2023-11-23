@@ -10,9 +10,13 @@ export type GenerativeSection = {
   options: GenerativeOption[]
 }
 
+export type GenerativeTaskOption = GenerativeOption & {
+  task: string
+}
+
 export type GenerativeSettings = {
   quality: GenerativeSection,
-  taskErrors: GenerativeSection,
+  taskErrors: GenerativeTaskOption,
   syntaxErrors: GenerativeSection,
   extra: GenerativeSection
 }
