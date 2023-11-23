@@ -49,6 +49,10 @@ The following structure is absolutely necessary:
 
 ```json
 {
+  "tasks": [
+    "Vokabeln",
+    "Ship"
+  ],
   "quality": {
     "options": {}
   },
@@ -67,6 +71,10 @@ The following structure is absolutely necessary:
 }
 ```
 
+The `tasks` field contains tasks for the tasksErrors section to filter the displayed options.
+
+The other fields contain the templates for the different sections:
+
 The `intro` field contains text that precedes the section in the generated response. This parameter is optional and can
 be omitted.
 
@@ -84,7 +92,8 @@ The `options` field then contains the options that are used to generate the resp
       "text": [
         "Everything correct!",
         "Very good!"
-      ]
+      ],
+      "task": "Vokabeln"
     }
   }
 }
@@ -94,6 +103,7 @@ The key of the options (here: `good1` and `good2`) can be freely selected, but m
 The `label` is the text that is displayed in the UI (i.e. next to the checkboxes/radio buttons).
 `text` is used to generate the response text. This can be a string or an array of strings. In the latter case, a random
 string is selected from the array.
+The `task` key is only used for `options` in `taskErrors`. It is used to specify the task for which the response is. This key is NOT optional!
 
 The file can be found in the following folder:
 
