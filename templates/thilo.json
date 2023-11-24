@@ -1,5 +1,11 @@
 {
   "comment": "Einiges von Carsten kopiert ^^",
+  "tasks": [
+    "Vokabeln",
+    "Ship",
+    "Skytale",
+    "Plateau"
+  ],
   "quality": {
     "options": {
       "good1": {
@@ -47,46 +53,52 @@
       },
       "wrongDirec": {
         "label": "Falsches Verzeichniss",
-        "text":
-        "Du hast leider das Programm im Falschen Ordner abgegeben, da wir feste Abgabevorschriften haben, kann ich das Programm leider nicht bewerten :("
+        "text": "Du hast leider das Programm im Falschen Ordner abgegeben, da wir feste Abgabevorschriften haben, kann ich das Programm leider nicht bewerten :("
       },
       "noFiles": {
         "label": "Leere Abgabe",
         "text": [
           "Schade, nichts abgegeben :(",
-          "Es wurde leider nichts abgegeben :("]
+          "Es wurde leider nichts abgegeben :("
+        ]
       }
     }
   },
   "taskErrors": {
     "options": {
-      "cosinusMapToInterval": {
-        "label": "Cosinus: MapToInterval",
-        "text": "- Die Eingrenzung auf das Interval [0, 2π] wäre auch mit dem Modulo Operator möglich:\n```java\nif (x < 0) {\n    x = -x;\n}\nx = x % ( * Math.PI)\n```"
+      "allArgsUsedBeforeCheck": {
+        "label": "Argument verwendet vor Check",
+        "text": "- Du hast ein Argument verwendet (also auf `args[n-1]` zugegriffen), bevor du überprüft hast, ob es überhaupt existiert (also überprüft hast, ob `args.length` mindestens `n`). Das kann zu Abstürzen führen."
+      },
+      "wrongFormat": {
+        "task": "__all__",
+        "label": "Falsches Ausgabeformat",
+        "text": "- Leider hast du dich nicht an das Ausgabeformat gehalten. So laufen unsere Tests nicht durch. Auch wenn es an manchen Stellen hier etwas banal klingt ist es vor allem später unglaublich wichtig sich wirklich an die Vorgaben zu halten, wie ein Programm Dinge aus und zurück gibt. Allerspätestens wenn man mit mehreren Personen arbeitet."
       },
       "vokabelnToCharArray": {
+        "task": "Vokabeln",
         "label": "Vokabeln: toCharArray()",
         "text": "Es gibt in Java selbst eine Methode namens `toCharArray()`. Diese kann man auf einem String aufrufen, wenn man diesen als `char[]` haben will. Solche Abkürzungen sich zu suchen ist immer ganz praktisch, da man sich so viel Zeit spart.\nWeiteres dazu gibts hier: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/String.html#toCharArray()"
       },
       "vokabelnNoGarantyMix": {
+        "task": "Vokabeln",
         "label": "Vokabeln: Keine Mixed - Garantie",
-        "text": "Deine Vokabeln werden zwar durchgemixt, jedoch kann es bei dir vorkommen, dass die Vokabeln wieder zufällig in der richtigen Reihenfolge auftauchen. Das sollte nicht passieren. Da am besten nochmal zum Schluss überprüfen, ob du wieder das richtige Wort raus hast und wenn ja dann nochmal neu shufflen"
-      },
-      "lottoKeineGleichverteilung": {
-        "label": "Lotto: Keine Gleichverteilung",
-        "text": "Deine Lösung funktioniert, die Ergebnisse haben aber nicht die gleiche Wahrscheinlichkeit. Falls du sehen willst wie das möglich ist, guck vielleicht mal in die Musterlösung."
-      },
-      "kniffelWrongDiceLogic": {
-        "label": "Kniffel: Falsche Logik",
-        "text": "Du hast leider ein Logikfehler bei der Berechnung von [Methode/n] gemacht: "
-      },
-      "kniffelWrongDiceLogicStraight": {
-        "label": "Kniffel: Falsche Logik (Straße)",
-        "text": "Du hast leider ein Logikfehler bei der Berechnung der kleinen/großen gemacht: "
+        "text": "Deine Vokabeln werden zwar durchgemixt, jedoch kann es bei dir vorkommen, dass die Vokabeln wieder zufällig in der richtigen Reihenfolge auftauchen. Das sollte nicht passieren. Du musst überprüfen, ob das geshuffelte Wort nicht gleich dem Originalwort ist. Falls die beiden gleich sind, musst du so lange das shuffeln wiederholen, bis du ein neues Wort raus hast."
       },
       "shipNicePic": {
+        "task": "Ship",
         "label": "Ship: Schönes Bild",
         "text": "Ein sehr kreatives Bild, find ich schön :)"
+      },
+      "skytaleNo28Check": {
+        "task": "Skytale",
+        "label": "Skytale: Kein 28 Länge Check",
+        "text": "- Du hast vergessen zu überprüfen, ob die Nachricht genau 28 Zeichen hat."
+      },
+      "plateauWithOneForLoop": {
+        "task": "Plateau",
+        "label": "Plateau: Zwei for Schleifen",
+        "text": "- Wenn du sehen willst, wie das ganze mit nur einer for Schleife geht, schau dir mal die Musterlösung an."
       }
     }
   },
@@ -119,17 +131,21 @@
       },
       "wrongCasing": {
         "label": "Falsche Groß-/Kleinschreibung",
-        "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen werden in lowerCamelCase geschrieben. (s. Vorlesungsfolien 2)"
+        "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen/Methodennamen werden in lowerCamelCase geschrieben und Klassennamen in UpperCamelCase. (s. Vorlesungsfolien 2)"
       },
-      "wrongFormat": {
-        "label": "Falsches Ausgabeformat",
-        "text": "- Leider hast du dich nicht an das Ausgabeformat gehalten. So laufen unsere Tests nicht durch. Auch wenn es an manchen Stellen hier etwas banal klingt ist es vor allem später unglaublich wichtig sich wirklich an die Vorgaben zu halten, wie ein Programm Dinge aus und zurück gibt. Allerspätestens wenn man mit mehreren Personen arbeitet."
+      "commentsMissing": {
+        "label": "Kommentare fehlen",
+        "text": "- Hier wäre es vielleicht sinnvoll, Kommentare zu schreiben, besonders an den schweren Stellen (wie mehreren `for` Schleifen ineinander) oder bei der Behandlung von Sonderfällen."
       }
     }
   },
   "extra": {
     "intro": "Weitere Anmerkung(en):",
     "options": {
+      "==insteadOfEquals": {
+        "label": "== statt equals",
+        "text": "- Verwende `.equals` statt `==` um Strings zu vergleichen."
+      },
       "system.exit": {
         "label": "System.exit",
         "text": "- Bitte kein `System.exit()` nutzen, unsere Tests mögen das nicht."
@@ -161,6 +177,14 @@
       "onlyOneFile": {
         "label": "Nur eine Datei",
         "text": "- Lade bitte nur immer eine Datei (sofern nicht anders angegeben) hoch. Falls du mal eine falsche Datei hochlädst, lösche sie bitte wieder. [Wie das geht kannst du im Tutorial zum Abgabesystem nachlesen](https://hsp.pages.cs.uni-duesseldorf.de/programmierung/website/lectures/progra/tutorials/classroom/#falsch-hochgeladene-dateien-l%C3%B6schen)."
+      },
+      "scannerWithSystemInClosed": {
+        "label": "Scanner mit System.in geschlossen",
+        "text": "- An sich ist es richtig, dass wir einen Scanner schließen, das ist bei Java mit System.in aber ein Sonderfall: einen Scanner auf System.in wollen wir in Java meistens nie selber schließen: https://coderanch.com/wiki/678613/Don-close-Scanner-tied-System"
+      },
+      "errorStreamInsteadOfOut": {
+        "label": "System.err statt System.out",
+        "text": "- Bitte verwende `System.out` statt `System.err` für die Ausgabe. Unsere Tests prüfen nur `System.out`."
       }
     }
   }

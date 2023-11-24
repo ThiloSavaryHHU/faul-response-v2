@@ -1,7 +1,9 @@
 {
   "tasks": [
     "Vokabeln",
-    "Ship"
+    "Ship",
+    "Skytale",
+    "Plateau"
   ],
   "quality": {
     "options": {
@@ -63,6 +65,15 @@
   },
   "taskErrors": {
     "options": {
+      "allArgsUsedBeforeCheck": {
+        "label": "Argument verwendet vor Check",
+        "text": "- Du hast ein Argument verwendet (also auf `args[n-1]` zugegriffen), bevor du überprüft hast, ob es überhaupt existiert (also überprüft hast, ob `args.length` mindestens `n`). Das kann zu Abstürzen führen."
+      },
+      "wrongFormat": {
+        "task": "__all__",
+        "label": "Falsches Ausgabeformat",
+        "text": "- Leider hast du dich nicht an das Ausgabeformat gehalten. So laufen unsere Tests nicht durch. Auch wenn es an manchen Stellen hier etwas banal klingt ist es vor allem später unglaublich wichtig sich wirklich an die Vorgaben zu halten, wie ein Programm Dinge aus und zurück gibt. Allerspätestens wenn man mit mehreren Personen arbeitet."
+      },
       "vokabelnToCharArray": {
         "task": "Vokabeln",
         "label": "Vokabeln: toCharArray()",
@@ -77,6 +88,16 @@
         "task": "Ship",
         "label": "Ship: Schönes Bild",
         "text": "Ein sehr kreatives Bild, find ich schön :)"
+      },
+      "skytaleNo28Check": {
+        "task": "Skytale",
+        "label": "Skytale: Kein 28 Länge Check",
+        "text": "- Du hast vergessen zu überprüfen, ob die Nachricht genau 28 Zeichen hat."
+      },
+      "plateauWithOneForLoop": {
+        "task": "Plateau",
+        "label": "Plateau: Zwei for Schleifen",
+        "text": "- Wenn du sehen willst, wie das ganze mit nur einer for Schleife geht, schau dir mal die Musterlösung an."
       }
     }
   },
@@ -110,10 +131,6 @@
       "wrongCasing": {
         "label": "Falsche Groß-/Kleinschreibung",
         "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen/Methodennamen werden in lowerCamelCase geschrieben und Klassennamen in UpperCamelCase. (s. Vorlesungsfolien 2)"
-      },
-      "wrongFormat": {
-        "label": "Falsches Ausgabeformat",
-        "text": "- Leider hast du dich nicht an das Ausgabeformat gehalten. So laufen unsere Tests nicht durch. Auch wenn es an manchen Stellen hier etwas banal klingt ist es vor allem später unglaublich wichtig sich wirklich an die Vorgaben zu halten, wie ein Programm Dinge aus und zurück gibt. Allerspätestens wenn man mit mehreren Personen arbeitet."
       },
       "commentsMissing": {
         "label": "Kommentare fehlen",
@@ -163,6 +180,10 @@
       "scannerWithSystemInClosed": {
         "label": "Scanner mit System.in geschlossen",
         "text": "- An sich ist es richtig, dass wir einen Scanner schließen, das ist bei Java mit System.in aber ein Sonderfall: einen Scanner auf System.in wollen wir in Java meistens nie selber schließen: https://coderanch.com/wiki/678613/Don-close-Scanner-tied-System"
+      },
+      "errorStreamInsteadOfOut": {
+        "label": "System.err statt System.out",
+        "text": "- Bitte verwende `System.out` statt `System.err` für die Ausgabe. Unsere Tests prüfen nur `System.out`."
       }
     }
   }
