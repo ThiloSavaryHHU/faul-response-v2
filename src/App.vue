@@ -101,7 +101,7 @@ function responseToGenerativeTaskOptions(response: ResponseDataGenerativeOptions
 fetch('/responses.json').then((response) => {
   response.json().then((data) => data as ResponseData).then((data) => {
     console.debug(data)
-    tasks.value = ['---'].concat(data.tasks);
+    tasks.value = ['---'].concat(data.tasks ?? []);
 
     options.quality.options = responseToGenerativeOptions(data.quality.options);
     if (options.quality.options.length > 0 && state.quality === '') {
