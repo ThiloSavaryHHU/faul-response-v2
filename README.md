@@ -103,7 +103,9 @@ The key of the options (here: `good1` and `good2`) can be freely selected, but m
 The `label` is the text that is displayed in the UI (i.e. next to the checkboxes/radio buttons).
 `text` is used to generate the response text. This can be a string or an array of strings. In the latter case, a random
 string is selected from the array.
-The `task` key is only used for `options` in `taskErrors`. It is used to specify the task for which the response is. This key is NOT optional!
+The `task` key is only used for `options` in `taskErrors`. It is used to specify the task for which the response is.
+If the task is not specified, the response is used for all tasks. The special value `"__all__"` can be used to specify
+that the response is used for all tasks.
 
 The file can be found in the following folder:
 

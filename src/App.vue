@@ -92,7 +92,7 @@ function responseToGenerativeTaskOptions(response: ResponseDataGenerativeOptions
       value: key,
       label: value.label,
       text: value.text,
-      task: value.task,
+      task: value.task ?? '__all__'
     })
     return acc
   }, [] as Array<GenerativeTaskOption>);
@@ -174,7 +174,7 @@ function reset(): void {
 }
 
 function filterTaskOptions(options: GenerativeTaskOption[], task: string): GenerativeTaskOption[] {
-  return options.filter((option) => option.task === task);
+  return options.filter((option) => option.task === task || option.task === '__all__');
 }
 
 watch([task], () => {
