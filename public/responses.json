@@ -6,7 +6,10 @@
     "Plateau",
     "References",
     "Pascal",
-    "Rectangle"
+    "Rectangle",
+    "Zulassung",
+    "Racecar",
+    "Resistor"
   ],
   "quality": {
     "options": {
@@ -119,7 +122,7 @@
       "pascalNoRecursive": {
         "task": "Pascal",
         "label": "Pascal: Keine Rekursion",
-        "text": "In der Aufgabe war klar gefordert, die berechnung der Zahlen Rekursiv zu machen. Das hast du leider nicht gemacht"
+        "text": "In der Aufgabe war klar gefordert, die berechnung der Zahlen Rekursiv zu machen. Das hast du leider nicht gemacht."
       },
       "rectangleUsedStatic": {
         "task": "Rectangle",
@@ -129,7 +132,32 @@
       "rectangleSimplerSquare": {
         "task": "Rectangle",
         "label": "Rectangle: isSquare() geht einfacher",
-        "text": "In isSquare() könntest du auch direkt `return width == height;` schreiben. Das ist wesentlich einfacher, übersichtlicher und sogar ein wenig performanter"
+        "text": "In isSquare() könntest du auch direkt `return width == height;` schreiben. Das ist wesentlich einfacher, übersichtlicher und sogar ein wenig performanter."
+      },
+      "zulassungNomoreWorking": {
+        "task": "Zulassung",
+        "label": "Zulassung: Tests laufen nicht mehr",
+        "text": "Voraussetzung dafür, dass man die Punkte noch bekommt ist, dass alle Tests weiterhin durchlaufen. Man sollte ja lediglich das \"Aussehen\" verändern."
+      },
+      "zulassungBadSymbols": {
+        "task": "Zulassung",
+        "label": "Zulassung: Unanständiges Verhalten",
+        "text": "Für ein friedliches Miteinander haben wir auch in unseren Abgaben Regeln. Dinge wie Hassrede oder Beleidigung sollte man in solchen Abgaben dementsprechend vermeiden."
+      },
+      "RacecarUsedStatic": {
+        "task": "Racecar",
+        "label": "Racecar: Statische Sachen benutzt",
+        "text": "In der Aufgabe sollten wir uns eine Klasse so schreiben, dass wir sie als Instanzen, als Datentypen verwenden können.\n\nEs scheint, als wäre dir noch nicht so ganz klar, was der unterschied zwischen statisch und nicht-statisch ist. Ich werde das hier nur kurz anschneiden:\n\nWenn wir eine Klasse haben, welche Funktionen hat, welche immer das gleiche Verhalten (ein statisches) haben, dann nutzen wir statische Methoden und Variablen. Ein Beispiel dafür wäre die Klasse `Math` und ihre statsische Methode `Math.sqrt()`. Wir wollen natürlich nicht, dass die Wurzel von der Mathklasse abhängt, sonder nur von den Eingabeparametern.\nEin nicht-statischer Fall wäre eine Methode auf Strings, die ihr schon kennengelernt habt. Hier als Beispiel `myString.toCharArray()` das Array das da raus kommt soll natürlich von der Variable `myString` abhängen."
+      },
+      "ResistorNoFallthrough": {
+        "task": "Resistor",
+        "label": "Resistor: Werte nicht durchgereicht",
+        "text": "Hier sollte man in der Ausgabe die Abkapselung in verschiedene Schaltungen ausnutzen. Explizit bedeutet das, dass du beim Implementieren der Reihen- und Parallelschaltungen beim Berechnen von Widerstand oder Conter immer die abgespeicherten Widerstände benutzen solltest. So kann man das Interface nämlich voll ausnutzen und muss die Formel nur einmal richtig implementieren"
+      },
+      "ResistorWrongFormular": {
+        "task": "Resistor",
+        "label": "Resistor: Falsche Formel",
+        "text": "Deine Formel für die Paralelschaltung/Reihenschaltung ist leider nicht richtig implementiert."
       }
     }
   },
