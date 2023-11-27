@@ -3,7 +3,10 @@
     "Vokabeln",
     "Ship",
     "Skytale",
-    "Plateau"
+    "Plateau",
+    "References",
+    "Pascal",
+    "Rectangle"
   ],
   "quality": {
     "options": {
@@ -37,6 +40,10 @@
       "bad": {
         "label": "Schlecht/Musterlösung",
         "text": "Guter Ansatz, aber das ist noch nicht ganz richtig. Am besten guckst du mal in die Musterlösung und/oder besuchst das Tutorium. Wenn du nicht weiterkommst, zögere nicht, uns zu fragen."
+      },
+      "wrongReason": {
+        "label": "Falsche Begründungen",
+        "text": "Leider sind deine Begründungen nicht sehr überzeugend/falsch."
       },
       "noCompile": {
         "label": "Compiliert nicht",
@@ -98,6 +105,31 @@
         "task": "Plateau",
         "label": "Plateau: Zwei for Schleifen",
         "text": "- Wenn du sehen willst, wie das ganze mit nur einer for Schleife geht, schau dir mal die Musterlösung an."
+      },
+      "referencesHeapStack": {
+        "task": "References",
+        "label": "References: Heap/Stack",
+        "text": "Du hast leider nicht erwähnt, wie das Zusammenspiel von Heap und Stack bei dieser Aufgabe ist.\nDas wichtigste hierbei ist, das auf dem Stack die Variablen der Methoden sind, was in der Regel alle primitiven Datentypen betrifft. Diese sind dann jeweils nur im Scope der eigenen Methoden verfügbar, bzw. wirken sich nur in diesem Scope aus. Auf dem Heap wiederrum liegen Daten, welche persistenter sind und über Methoden hinweg gehen. Verändert man diese, werden die Veränderungen auch Global übernommen."
+      },
+      "referencesExample": {
+        "task": "References",
+        "label": "References: Allgemeine Erklärung",
+        "text": "Schönes anschauliches Beispiel für den Unterschied von Referenz und Objekt-Daten [haben wir seit 22/23 auch im Ilias]:\n\nStelle dir vor zu hast einen allgemeinen Spind und einen Schlüssel dazu. Wenn du jemandem Zugriff gewähren möchtest, gibst du ihm nicht den Spind und auch nicht deinen Schlüssel, sondern eine Kopie des Schlüssels. Auf so einem Schlüssel steht dann immer eine Spindnummer, damit man weiß, zu welchem Spind der Schlüssel gehört.\n\nDer Spind stellt die Objekt-Daten dar, dein Schlüssel ist die Referenz in der `main` und die Kopie des Schlüssels ist der Parameter.\n\nWenn jetzt die Person, der du den Schlüssel gegeben hast, den Schlüssel verändert, verändert sich nichts an deinem Schlüssel und auch nichts am Spind, aber wenn diese Person den Spind leerräumt, hat das auch eine Auswirkung auf dich.\n\nAusgabe 3 wäre der Fall, dass die Person den Schlüssel verändert. Ausgabe 2 hingegen ist der Fall dass der Spind leergeräumt wird. Bei Ausgabe 1 gibt es keinen Schlüssel und du sagst der Person einfach, was sich in dem Spind befindet."
+      },
+      "pascalNoRecursive": {
+        "task": "Pascal",
+        "label": "Pascal: Keine Rekursion",
+        "text": "In der Aufgabe war klar gefordert, die berechnung der Zahlen Rekursiv zu machen. Das hast du leider nicht gemacht"
+      },
+      "rectangleUsedStatic": {
+        "task": "Rectangle",
+        "label": "Rectangle: Statische Sachen benutzt",
+        "text": "In der Aufgabe sollten wir uns eine Klasse so schreiben, dass wir sie als Instanzen, als Datentypen verwenden können.\n\nEs scheint, als wäre dir noch nicht so ganz klar, was der unterschied zwischen statisch und nicht-statisch ist. Ich werde das hier nur kurz anschneiden:\n\nWenn wir eine Klasse haben, welche Funktionen hat, welche immer das gleiche Verhalten (ein statisches) haben, dann nutzen wir statische Methoden und Variablen. Ein Beispiel dafür wäre die Klasse `Math` und ihre statsische Methode `Math.sqrt()`. Wir wollen natürlich nicht, dass die Wurzel von der Mathklasse abhängt, sonder nur von den Eingabeparametern.\nEin nicht-statischer Fall wäre eine Methode auf Strings, die ihr schon kennengelernt habt. Hier als Beispiel `myString.toCharArray()` das Array das da raus kommt soll natürlich von der Variable `myString` abhängen."
+      },
+      "rectangleSimplerSquare": {
+        "task": "Rectangle",
+        "label": "Rectangle: isSquare() geht einfacher",
+        "text": "In isSquare() könntest du auch direkt `return width == height;` schreiben. Das ist wesentlich einfacher, übersichtlicher und sogar ein wenig performanter"
       }
     }
   },
