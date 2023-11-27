@@ -3,7 +3,7 @@ import StyledInput from '@/components/StyledInput.vue';
 import {reactive, ref, watch} from 'vue';
 import RadioGroup from '@/components/RadioGroup.vue';
 import CheckboxGroup from '@/components/CheckboxGroup.vue';
-import type {GenerativeOption, GenerativeSection, GenerativeSettings, GenerativeTaskOption} from '@/types';
+import type {GenerativeOption, GenerativeSection, GenerativeSettings} from '@/types';
 import StyledButton from '@/components/StyledButton.vue';
 import StyledCheckbox from '@/components/StyledCheckbox.vue';
 import StyledSelect from '@/components/StyledSelect.vue';
@@ -52,7 +52,9 @@ let options = reactive<GenerativeSettings>({
 type ResponseDataGenerativeOptions = {
   [x: string]: {
     label: string,
-    text: string | string[]
+    text: string | string[],
+    task?: string | string[],
+    excluded?: string[]
   }
 }
 
@@ -81,22 +83,13 @@ function responseToGenerativeOptions(response: ResponseDataGenerativeOptions): G
       value: key,
       label: value.label,
       text: value.text,
+      task: value.task ?? '__all__',
+      excluded: value.excluded ?? []
     })
     return acc
   }, [] as Array<GenerativeOption>);
 }
 
-function responseToGenerativeTaskOptions(response: ResponseDataGenerativeOptions): GenerativeTaskOption[] {
-  return Object.entries(response).reduce((acc, [key, value]) => {
-    acc.push({
-      value: key,
-      label: value.label,
-      text: value.text,
-      task: value.task ?? '__all__'
-    })
-    return acc
-  }, [] as Array<GenerativeTaskOption>);
-}
 
 fetch('/responses.json').then((response) => {
   response.json().then((data) => data as ResponseData).then((data) => {
@@ -107,7 +100,7 @@ fetch('/responses.json').then((response) => {
     if (options.quality.options.length > 0 && state.quality === '') {
       state.quality = options.quality.options[0].value;
     }
-    options.taskErrors.options = responseToGenerativeTaskOptions(data.taskErrors.options);
+    options.taskErrors.options = responseToGenerativeOptions(data.taskErrors.options);
     options.taskErrors.intro = data.taskErrors.intro;
     options.syntaxErrors.options = responseToGenerativeOptions(data.syntaxErrors.options);
     options.syntaxErrors.intro = data.syntaxErrors.intro;
@@ -173,8 +166,18 @@ function reset(): void {
   state.extra = [];
 }
 
-function filterTaskOptions(options: GenerativeTaskOption[], task: string): GenerativeTaskOption[] {
-  return options.filter((option) => option.task === task || option.task === '__all__');
+function filterOptions(options: GenerativeOption[], task: string): GenerativeOption[] {
+  return options.filter((option) => {
+    if (typeof(option.task) === 'string') {
+      if (option.task === '__all__') {
+        return !option.excluded.includes(task)
+      } else {
+        return option.task === task;
+      }
+    } else {
+      return option.task.includes(task);
+    }
+  });
 }
 
 watch([task], () => {
@@ -221,19 +224,19 @@ watch([points, maxPoints, state, task], () => {
       <div class="flex flex-col items-start min-h-0 overflow-scroll xl-screen-flex-wrap">
 
         <div class="p-2">
-          <RadioGroup :options="options.quality.options" name="quality" v-model="state.quality"
+          <RadioGroup :options="filterOptions(options.quality.options, task)" name="quality" v-model="state.quality"
                       title="Ingesamte Qualität"/>
         </div>
-        <div class="p-2" v-if="filterTaskOptions(options.taskErrors.options, task).length > 0">
-          <CheckboxGroup :options="filterTaskOptions(options.taskErrors.options, task)" name="quality" v-model="state.taskErrors"
+        <div class="p-2" v-if="filterOptions(options.taskErrors.options, task).length > 0">
+          <CheckboxGroup :options="filterOptions(options.taskErrors.options, task)" name="quality" v-model="state.taskErrors"
                          title="Aufgabenspezifische Fehler"/>
         </div>
-        <div class="p-2">
-          <CheckboxGroup :options="options.syntaxErrors.options" name="syntaxErrors" v-model="state.syntaxErrors"
+        <div class="p-2" v-if="filterOptions(options.syntaxErrors.options, task).length > 0">
+          <CheckboxGroup :options="filterOptions(options.syntaxErrors.options, task)" name="syntaxErrors" v-model="state.syntaxErrors"
                          title="Syntax"/>
         </div>
-        <div class="p-2" v-if="options.extra.options.length > 0">
-          <CheckboxGroup :options="options.extra.options" name="quality" v-model="state.extra"
+        <div class="p-2" v-if="filterOptions(options.extra.options, task).length > 0">
+          <CheckboxGroup :options="filterOptions(options.extra.options, task)" name="quality" v-model="state.extra"
                          title="Weitere Anmerkungen"/>
         </div>
 

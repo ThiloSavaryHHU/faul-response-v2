@@ -71,7 +71,7 @@ The following structure is absolutely necessary:
 }
 ```
 
-The `tasks` field contains tasks for the tasksErrors section to filter the displayed options.
+The `tasks` field contains tasks for the tasksErrors section to filter the displayed options. (see below)
 
 The other fields contain the templates for the different sections:
 
@@ -85,7 +85,8 @@ The `options` field then contains the options that are used to generate the resp
   "options": {
     "good1": {
       "label": "Good",
-      "text": "Everything is correct!"
+      "text": "Everything is correct!",
+        "task": ["Vokabeln", "Ship"]
     },
     "good2": {
       "label": "Good (Simple)",
@@ -94,18 +95,27 @@ The `options` field then contains the options that are used to generate the resp
         "Very good!"
       ],
       "task": "Vokabeln"
+    },
+    "bad1": {
+      "label": "Bad",
+      "text": "Everything is wrong!",
+      "exclude": ["Vokabeln"]
     }
   }
 }
 ```
 
-The key of the options (here: `good1` and `good2`) can be freely selected, but must be unique.
+The key of the options (here: `good1`, `good2`, `bad1`) can be freely selected, but must be unique.
 The `label` is the text that is displayed in the UI (i.e. next to the checkboxes/radio buttons).
 `text` is used to generate the response text. This can be a string or an array of strings. In the latter case, a random
 string is selected from the array.
-The `task` key is only used for `options` in `taskErrors`. It is used to specify the task for which the response is.
-If the task is not specified, the response is used for all tasks. The special value `"__all__"` can be used to specify
-that the response is used for all tasks.
+
+It is possible to filter the options by a task name.
+By default, all options are displayed for all tasks.
+If the `task` field is set to a string, the option is only displayed for the specified task.
+If the `task` field is set to an array of strings, the option is only displayed for the specified tasks.
+If the `exclude` field is set to an array of strings, the option is not displayed for the specified tasks.
+The `exclude` field is ignored if the `task` field is set.
 
 The file can be found in the following folder:
 

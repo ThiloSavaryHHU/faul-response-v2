@@ -3,6 +3,8 @@ export type GenerativeOption = {
   value: string
   text: string | string[],
   points?: number | 'MAX',
+  task: string | string[],
+  excluded: string[],
 }
 
 export type GenerativeSection = {
@@ -10,13 +12,10 @@ export type GenerativeSection = {
   options: GenerativeOption[]
 }
 
-export type GenerativeTaskOption = GenerativeOption & {
-  task: string
-}
 
 export type GenerativeSettings = {
   quality: GenerativeSection,
-  taskErrors: GenerativeTaskOption,
+  taskErrors: GenerativeSection,
   syntaxErrors: GenerativeSection,
   extra: GenerativeSection
 }
