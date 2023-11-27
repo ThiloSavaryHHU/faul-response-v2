@@ -22,7 +22,7 @@ const urlState = JSON.parse(url.searchParams.get('state') ?? '{}');
 const points = ref(url.searchParams.get('points') ?? 1);
 const maxPoints = ref(url.searchParams.get('maxPoints') ?? 1);
 
-const tasks = ref<String[]>([])
+const tasks = ref<string[]>([])
 const task = ref(url.searchParams.get('task') ?? '---')
 
 console.debug(urlState)
