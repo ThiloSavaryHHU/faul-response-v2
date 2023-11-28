@@ -23,7 +23,7 @@ const urlState = JSON.parse(url.searchParams.get('state') ?? '{}');
 const points = ref(url.searchParams.get('points') ?? 1);
 const maxPoints = ref(url.searchParams.get('maxPoints') ?? 1);
 
-const tasks = ref<string[]>([])
+const tasks = ref<{[x: string]: string}>({})
 const task = ref(url.searchParams.get('task') ?? '---')
 
 console.debug(urlState)
@@ -97,10 +97,7 @@ function responseToGenerativeOptions(response: ResponseDataGenerativeOptions): G
 fetch('/responses.json').then((response) => {
   response.json().then((data) => data as ResponseData).then((data) => {
     console.debug(data)
-    tasks.value = data.tasks ?? {};
-    for (const task in tasks.value) {
-      console.debug(task)
-    }
+    tasks.value = data.tasks ?? {} as { [x: string]: string };
 
     options.quality.options = responseToGenerativeOptions(data.quality.options);
     if (options.quality.options.length > 0 && state.quality === '') {
