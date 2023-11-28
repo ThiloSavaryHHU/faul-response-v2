@@ -1,16 +1,24 @@
 {
-  "tasks": [
-    "Vokabeln",
-    "Ship",
-    "Skytale",
-    "Plateau",
-    "References",
-    "Pascal",
-    "Rectangle",
-    "Zulassung",
-    "Racecar",
-    "Resistor"
-  ],
+  "tasks": {
+    "Blatt 5": [
+      "Ship"
+    ],
+    "Blatt 6": [
+      "Vokabeln",
+      "Skytale",
+      "Plateau"
+    ],
+    "Blatt 7": [
+      "References",
+      "Pascal",
+      "Rectangle"
+    ],
+    "Blatt 8": [
+      "Zulassung",
+      "Racecar",
+      "Resistor"
+    ]
+  },
   "quality": {
     "options": {
       "good1": {

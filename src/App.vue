@@ -59,7 +59,9 @@ type ResponseDataGenerativeOptions = {
 }
 
 type ResponseData = {
-  tasks: string[],
+  tasks: {
+    [x: string]: string
+  },
   quality: {
     options: ResponseDataGenerativeOptions
   },
@@ -94,7 +96,10 @@ function responseToGenerativeOptions(response: ResponseDataGenerativeOptions): G
 fetch('/responses.json').then((response) => {
   response.json().then((data) => data as ResponseData).then((data) => {
     console.debug(data)
-    tasks.value = ['---'].concat(data.tasks ?? []);
+    tasks.value = data.tasks ?? {};
+    for (const task in tasks.value) {
+      console.debug(task)
+    }
 
     options.quality.options = responseToGenerativeOptions(data.quality.options);
     if (options.quality.options.length > 0 && state.quality === '') {
@@ -201,6 +206,7 @@ watch([points, maxPoints, state, task], () => {
 })
 
 
+
 </script>
 
 <template>
@@ -211,8 +217,11 @@ watch([points, maxPoints, state, task], () => {
                      type="number" class="w-full"/>
         <StyledInput id="maxPoints" v-model="maxPoints" label="Max Punkte" placeholder="Max Punkte"
                      type="number" class="w-full"/>
-        <StyledSelect id="task" v-model="task" v-if="tasks.length > 0" label="Aufgabe">
-          <option v-for="t in tasks" :value="t" :key="t">{{ t }}</option>
+        <StyledSelect id="task" v-model="task" label="Aufgabe">
+          <option value="---">---</option>
+          <optgroup v-for="group in Object.keys(tasks)" :label="group" :key="group">
+            <option v-for="task in tasks[group]" :value="task" :key="task">{{ task }}</option>
+          </optgroup>
         </StyledSelect>
         <!--        <StyledSelect id="task" v-model="task" label="Aufgabe" class="w-full">-->
         <!--          <optgroup label="Blatt 1">-->

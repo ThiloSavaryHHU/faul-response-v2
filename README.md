@@ -49,10 +49,16 @@ The following structure is absolutely necessary:
 
 ```json
 {
-  "tasks": [
-    "Vokabeln",
-    "Ship"
-  ],
+  "tasks": {
+    "Blatt1": [
+      "Vokabeln",
+      "Ship"
+    ],
+    "Blatt2": [
+      "References",
+      "Rectangle"
+    ]
+  },
   "quality": {
     "options": {}
   },
