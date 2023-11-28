@@ -7,6 +7,7 @@ import type {GenerativeOption, GenerativeSection, GenerativeSettings} from '@/ty
 import StyledButton from '@/components/StyledButton.vue';
 import StyledCheckbox from '@/components/StyledCheckbox.vue';
 import StyledSelect from '@/components/StyledSelect.vue';
+import NotesComponent from "@/NotesComponent.vue";
 
 type State = {
   quality: string;
@@ -117,7 +118,7 @@ fetch('/responses.json').then((response) => {
 });
 
 function generateTextForSingleChoiceSection(
-  section: GenerativeSection, state: string | number, suffix: string = '\n', prefix: string = ''
+    section: GenerativeSection, state: string | number, suffix: string = '\n', prefix: string = ''
 ): string {
   const option = section.options.find((option) => option.value === state);
   if (!option) {
@@ -131,7 +132,7 @@ function generateTextForSingleChoiceSection(
 }
 
 function generateTextForMultipleChoiceSection(
-  section: GenerativeSection, state: string[], suffix: string = '\n', prefix: string = ''
+    section: GenerativeSection, state: string[], suffix: string = '\n', prefix: string = ''
 ): string {
   const options = section.options.filter((option) => state.includes(option.value));
   if (options.length === 0) {
@@ -173,7 +174,7 @@ function reset(): void {
 
 function filterOptions(options: GenerativeOption[], task: string): GenerativeOption[] {
   return options.filter((option) => {
-    if (typeof(option.task) === 'string') {
+    if (typeof (option.task) === 'string') {
       if (option.task === '__all__') {
         return !option.excluded.includes(task)
       } else {
@@ -206,7 +207,6 @@ watch([points, maxPoints, state, task], () => {
 })
 
 
-
 </script>
 
 <template>
@@ -237,11 +237,13 @@ watch([points, maxPoints, state, task], () => {
                       title="Ingesamte Qualität"/>
         </div>
         <div class="p-2" v-if="filterOptions(options.taskErrors.options, task).length > 0">
-          <CheckboxGroup :options="filterOptions(options.taskErrors.options, task)" name="quality" v-model="state.taskErrors"
+          <CheckboxGroup :options="filterOptions(options.taskErrors.options, task)" name="quality"
+                         v-model="state.taskErrors"
                          title="Aufgabenspezifische Fehler"/>
         </div>
         <div class="p-2" v-if="filterOptions(options.syntaxErrors.options, task).length > 0">
-          <CheckboxGroup :options="filterOptions(options.syntaxErrors.options, task)" name="syntaxErrors" v-model="state.syntaxErrors"
+          <CheckboxGroup :options="filterOptions(options.syntaxErrors.options, task)" name="syntaxErrors"
+                         v-model="state.syntaxErrors"
                          title="Syntax"/>
         </div>
         <div class="p-2" v-if="filterOptions(options.extra.options, task).length > 0">
@@ -252,22 +254,27 @@ watch([points, maxPoints, state, task], () => {
       </div>
     </div>
 
-    <div class="rounded-lg border border-slate-200 shadow-lg  bg-slate-100 flex-1 overflow-scroll ">
-      <div class="p-2 flex justify-between">
-        <StyledButton @click="copyTextToClipboard(text)">Kopieren</StyledButton>
-        <StyledButton @click="reset()">Reset</StyledButton>
-        <StyledButton @click="generateText()">Neu generieren</StyledButton>
-      </div>
-      <div class="p-2">
+    <div class="rounded-lg border border-slate-200 shadow-lg  bg-slate-100 flex-1 overflow-scroll flex flex-col">
+      <div>
+        <div class="p-2 flex justify-between">
+          <StyledButton @click="copyTextToClipboard(text)">Kopieren</StyledButton>
+          <StyledButton @click="reset()">Reset</StyledButton>
+          <StyledButton @click="generateText()">Neu generieren</StyledButton>
+        </div>
+        <div class="p-2">
         <textarea
             :value="text"
             @input="text = ($event.target as HTMLInputElement).value"
             class="bg-white p-2 border rounded-lg shadow w-full h-96 outline-none"
             :readonly="!canEdit"
         ></textarea>
+        </div>
+        <div class="flex pr-4 justify-end">
+          <StyledCheckbox id="editable" v-model:checked="canEdit" label="Editierbar"/>
+        </div>
       </div>
-      <div class="flex pr-4 justify-end">
-        <StyledCheckbox id="editable" v-model:checked="canEdit" label="Editierbar"/>
+      <div class="flex-1 pt-2">
+        <NotesComponent/>
       </div>
     </div>
   </div>
