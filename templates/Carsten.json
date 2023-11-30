@@ -41,26 +41,34 @@
         "text": "Gut gemacht, allerdings haben sich noch ein paar Fehler eingeschlichen:"
       },
       "bad": {
-        "label": "Schlecht/Musterlösung",
-        "text": "Guter Ansatz, aber das ist noch nicht ganz richtig. Am besten guckst du mal in die Musterlösung und/oder besuchst das Tutorium. Wenn du nicht weiterkommst, zögere nicht, uns zu fragen."
+        "label": "Schlecht",
+        "text": "Guter Ansatz, aber das ist noch nicht ganz richtig."
       },
       "wrongReason": {
         "label": "Falsche Begründungen",
         "text": "Leider sind deine Begründungen nicht sehr überzeugend/falsch."
       },
+      "missingReason": {
+        "label": "Begründungen fehlen",
+        "text": "Leider fehlen deine Begründungen."
+      },
       "noCompile": {
+        "excluded": ["References"],
         "label": "Compiliert nicht",
         "text": "Leider kompiliert dein Programm nicht. Am besten testest du vor der Abgabe zumindest mal, ob das Programm überhaupt kompiliert. Oft wird einem bei der Fehlermeldung auch gesagt, was man falsch gemacht hat. Ansonsten kannst du natürlich immer gerne an sämtlichen Stellen nachfragen, wenn du nicht mehr weiter kommst.\nExplizit bei dir kompiliert es nicht aufgrund [Grund angeben]"
       },
       "wrongFileName": {
+        "excluded": ["References"],
         "label": "Dateiname falsch",
         "text": "Schade, leider hast du deine Datei falsch benannt, sie sollte [Dateiname] heißen. Deshalb gibt es für diese Abgabe keine Punkte. Achte das nächste mal darauf, dass die Tests durchlaufen."
       },
       "wrongClassName": {
+        "excluded": ["References"],
         "label": "Klassennamen falsch",
         "text": "Leider hast du deine Klasse falsch benannt, der Name muss exakt wie auf dem Übungsblatt sein. Deshalb gibt es für diese Abgabe keine Punkte. Achte das nächste mal darauf, dass die Tests durchlaufen."
       },
       "wrongDirec": {
+        "excluded": ["References"],
         "label": "Falsches Verzeichniss",
         "text": "Du hast leider das Programm im Falschen Ordner abgegeben, da wir feste Abgabevorschriften haben, kann ich das Programm leider nicht bewerten :("
       },
@@ -76,11 +84,11 @@
   "taskErrors": {
     "options": {
       "allArgsUsedBeforeCheck": {
+        "excluded": ["References"],
         "label": "Argument verwendet vor Check",
         "text": "- Du hast ein Argument verwendet (also auf `args[n-1]` zugegriffen), bevor du überprüft hast, ob es überhaupt existiert (also überprüft hast, ob `args.length` mindestens `n`). Das kann zu Abstürzen führen."
       },
       "wrongFormat": {
-        "task": "__all__",
         "label": "Falsches Ausgabeformat",
         "text": "- Leider hast du dich nicht an das Ausgabeformat gehalten. So laufen unsere Tests nicht durch. Auch wenn es an manchen Stellen hier etwas banal klingt ist es vor allem später unglaublich wichtig sich wirklich an die Vorgaben zu halten, wie ein Programm Dinge aus und zurück gibt. Allerspätestens wenn man mit mehreren Personen arbeitet."
       },
@@ -112,12 +120,17 @@
       "referencesHeapStack": {
         "task": "References",
         "label": "References: Heap/Stack",
-        "text": "Du hast leider nicht erwähnt, wie das Zusammenspiel von Heap und Stack bei dieser Aufgabe ist.\nDas wichtigste hierbei ist, das auf dem Stack die Variablen der Methoden sind, was in der Regel alle primitiven Datentypen betrifft. Diese sind dann jeweils nur im Scope der eigenen Methoden verfügbar, bzw. wirken sich nur in diesem Scope aus. Auf dem Heap wiederrum liegen Daten, welche persistenter sind und über Methoden hinweg gehen. Verändert man diese, werden die Veränderungen auch Global übernommen."
+        "text": "Du hast leider nicht erwähnt, wie das Zusammenspiel von Heap und Stack bei dieser Aufgabe ist."
       },
-      "referencesExample": {
+      "referencesMethodCall": {
         "task": "References",
-        "label": "References: Allgemeine Erklärung",
-        "text": "Schönes anschauliches Beispiel für den Unterschied von Referenz und Objekt-Daten [haben wir seit 22/23 auch im Ilias]:\n\nStelle dir vor zu hast einen allgemeinen Spind und einen Schlüssel dazu. Wenn du jemandem Zugriff gewähren möchtest, gibst du ihm nicht den Spind und auch nicht deinen Schlüssel, sondern eine Kopie des Schlüssels. Auf so einem Schlüssel steht dann immer eine Spindnummer, damit man weiß, zu welchem Spind der Schlüssel gehört.\n\nDer Spind stellt die Objekt-Daten dar, dein Schlüssel ist die Referenz in der `main` und die Kopie des Schlüssels ist der Parameter.\n\nWenn jetzt die Person, der du den Schlüssel gegeben hast, den Schlüssel verändert, verändert sich nichts an deinem Schlüssel und auch nichts am Spind, aber wenn diese Person den Spind leerräumt, hat das auch eine Auswirkung auf dich.\n\nAusgabe 3 wäre der Fall, dass die Person den Schlüssel verändert. Ausgabe 2 hingegen ist der Fall dass der Spind leergeräumt wird. Bei Ausgabe 1 gibt es keinen Schlüssel und du sagst der Person einfach, was sich in dem Spind befindet."
+        "label": "References: Methodenaufruf/Stack Frame",
+        "text": "Es fehlt eine Erklärung, was beim Methodenaufruf passiert bzw. wie sich das auf den Stack auswirkt also was in den einzelnen Stack Frames passiert und wie sich das auf die anderen auswirkt."
+      },
+      "referencesExplanation": {
+        "task": "References",
+        "label": "References: Erklärung",
+        "text": "Das wichtigste hierbei ist, das auf dem Stack die Variablen der Methoden im jeweiligen Stack Frame der laufenden Methode gespeichert werden, bei primitiven Typen wird direkt der Wert gespeichert, bei komplexen wird die Adresse des Objektes im Heap gespeichert (in Java meistens Referenz genannt). Bei einem Methodenaufruf werden die übergebenen Parameter in den neuen Stack Frame der aufgerufenen Methode kopiert. Für primitive Typen wird der Wert kopiert, für komplexe der Wert der Adresse.\nDiese Kopie zu ändern, ändert aber nichts an den Originalen im alten Stack Frame. Verändern wir ein Objekt im Heap jedoch direkt, dann bekommen auch alle anderen Referenzen das mit."
       },
       "pascalNoRecursive": {
         "task": "Pascal",
@@ -165,34 +178,42 @@
     "intro": "Zur Syntax:",
     "options": {
       "indent": {
+        "excluded": ["References"],
         "label": "Einrückung fehlerhaft",
         "text": "- Achte bitte auf die Einrückung, damit der Code lesbar wird. (siehe Vorlesung 1)"
       },
       "badVariableName": {
+        "excluded": ["References"],
         "label": "Variable unschön benannt",
         "text": "- Achte auf deine Variablen/Methodenbezeichnungen, damit klar ist, was sie speichern/machen.\n a, foo, tmp sind beispielsweise keine guten Namen."
       },
       "ifWhileForInline": {
+        "excluded": ["References"],
         "label": "if/while/for/else inline",
         "text": "- Bitte nutze keine Einzeiler für if/while/for/else Blöcke. Wir wollen eine Anweisung pro Zeile (mit ganz speziellen Ausnahmen) schreiben."
       },
       "ifWhileForWithoutBraces": {
+        "excluded": ["References"],
         "label": "if/while/for/else ohne Klammern",
         "text": "- Bitte nutze nach if/while/for/else immer die `{ }` Klammern."
       },
       "toManyBlankLines": {
+        "excluded": ["References"],
         "label": "Zu viele Leerzeilen",
         "text": "- Du hast ein paar viele Leerzeilen verwendet."
       },
       "noBlankLines": {
+        "excluded": ["References"],
         "label": "Keine Leerzeilen",
         "text": "- Du hast keine Leerzeilen verwendet. Mit Leerzeilen kannst du logische Blöcke voneinander trennen, das macht den Code leichter lesbar."
       },
       "wrongCasing": {
+        "excluded": ["References"],
         "label": "Falsche Groß-/Kleinschreibung",
         "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen/Methodennamen werden in lowerCamelCase geschrieben und Klassennamen in UpperCamelCase. (s. Vorlesungsfolien 2)"
       },
       "commentsMissing": {
+        "excluded": ["References"],
         "label": "Kommentare fehlen",
         "text": "- Hier wäre es vielleicht sinnvoll, Kommentare zu schreiben, besonders an den schweren Stellen (wie mehreren `for` Schleifen ineinander) oder bei der Behandlung von Sonderfällen."
       }
@@ -202,34 +223,42 @@
     "intro": "Weitere Anmerkung(en):",
     "options": {
       "==insteadOfEquals": {
+        "excluded": ["References"],
         "label": "== statt equals",
         "text": "- Verwende `.equals` statt `==` um Strings zu vergleichen."
       },
       "system.exit": {
+        "excluded": ["References"],
         "label": "System.exit",
         "text": "- Bitte kein `System.exit()` nutzen, unsere Tests mögen das nicht."
       },
       "misleadingErrorMessages": {
+        "excluded": ["References"],
         "label": "Irreführende Fehlermeldungen",
         "text": "- Bitte achte darauf, dass deine Fehlermeldungen nicht \"falsch\" sind. Wenn du beispielsweise auf `args.length != 1` prüfst, deine Fehlermeldung aber *\"ERROR: Keine Argumente übergeben\"* lautet, bekommt der Nutzer die Fehlermeldung auch, wenn er 2 oder mehr Argumente übergibt. Das ist irreführend."
       },
       "blaError": {
+        "excluded": ["References"],
         "label": "Nichts aussagende Fehlermeldung",
         "text": "- Bitte achte darauf, dass deine Fehlermeldungen etwas aussagen. Wenn du beispielsweise auf `args.length != 1` prüfst, deine Fehlermeldung aber *\"ERROR: Error\"* lautet, weiß der Nutzer nicht, was er falsch gemacht hat. (Ja, das mag nervig sein, aber es ist wichtig, das direkt zu üben und sich zu verinnerlichen.)"
       },
       "errorElseNester": {
+        "excluded": ["References"],
         "label": "Fehler verschachtelt (mit else)",
         "text": "- Bitte beende dein Programm bei der Überprüfung der Nutzereingabe bei fehlerhafter Eingabe mit einem `return` und verwende keinen else Block für den eigentlichen Code. Bei vielen Fehlerüberprüfungen kann es sonst passieren, dass du ganz viele `else` Blöcke hast und der eigentliche Code ganz weit eingerückt ist. Also aus \n\n ```java\n if(args.length != 1){\n    ...\n} else {\n    // Der eigentliche Code\n}\n```\n\n wird \n\n```java\nif(args.length != 1){\n    ...\n    return;\n}\n// Der eigentliche Code\n```"
       },
       "stupidErrorElseNester": {
+        "excluded": ["References"],
         "label": "Fehler verschachtelt (mit else) - trotz return",
         "text": "- Wenn du in der Fehlerüberprüfung `return` verwendest, kannst du den eigentlichen Code auch ohne `else` schreiben. Also aus \n\n ```java\n if(args.length != 1){\n    ...\n    return;\n}\nelse {\n    // Der eigentliche Code\n}\n```\n\n wird \n\n```java\nif(args.length != 1){\n    ...\n    return;\n}\n// Der eigentliche Code\n```"
       },
       "ErrorIfNester": {
+        "excluded": ["References"],
         "label": "Fehler verschachtelt (mit if)",
         "text": "- Es ist oft sinnvoll, zuerst auf die Fehler zu überprüfen, und dann den eigentlichen Code auszuführen. Sonst kann es bei vielen Fehlerüberprüfungen passieren, dass du ganz viele verschachtelte if Blöcke hast und der eigentliche Code ganz weit eingerückt ist. Also aus \n\n ```java\n if(args.length > 0){\n    // Der eigentliche Code\n} else {\n    //Fehlermeldung\n}\n```\n\n wird \n\n```java\nif(args.length == 0){\n    //Fehlermeldung\n    return;\n}\n// Der eigentliche Code\n```"
       },
       ".class": {
+        "excluded": ["References"],
         "label": ".class Datei hochgeladen",
         "text": "- Die .class Datein brauchen wir nicht, bitte nur die .java Datei hochladen."
       },
@@ -238,12 +267,27 @@
         "text": "- Lade bitte nur immer eine Datei (sofern nicht anders angegeben) hoch. Falls du mal eine falsche Datei hochlädst, lösche sie bitte wieder. [Wie das geht kannst du im Tutorial zum Abgabesystem nachlesen](https://hsp.pages.cs.uni-duesseldorf.de/programmierung/website/lectures/progra/tutorials/classroom/#falsch-hochgeladene-dateien-l%C3%B6schen)."
       },
       "scannerWithSystemInClosed": {
+        "excluded": ["References"],
         "label": "Scanner mit System.in geschlossen",
         "text": "- An sich ist es richtig, dass wir einen Scanner schließen, das ist bei Java mit System.in aber ein Sonderfall: einen Scanner auf System.in wollen wir in Java meistens nie selber schließen: https://coderanch.com/wiki/678613/Don-close-Scanner-tied-System"
       },
       "errorStreamInsteadOfOut": {
+        "excluded": ["References"],
         "label": "System.err statt System.out",
         "text": "- Bitte verwende `System.out` statt `System.err` für die Ausgabe. Unsere Tests prüfen nur `System.out`."
+      },
+      "referencesStackNotStackFrame": {
+        "task": "References",
+        "label": "References: Stack ≠ Stack Frame",
+        "text": "Beachte: Der Stack ist nicht das gleiche wie ein Stack Frame. Der Stack ist der Speicherbereich, in dem die Stack Frames liegen. Beim Methodenaufruf wird ein neuer Stack Frame auf den Stack gelegt, beim Methodenende wird er wieder entfernt. Der Stack Frame ist der Speicherbereich, in dem die lokalen Variablen der Methode liegen. Jeder Methodenaufruf hat seinen eigenen Stack Frame. Wenn du sagst, dass eine Variable auf dem Stack liegt, meinst du eigentlich, dass sie in einem Stack Frame liegt und solltest angeben, in welchem Stack Frame sie liegt."
+      },
+      "lookIntoSolution": {
+        "label": "Musterlösung anschauen",
+        "text": "- Am besten guckst du mal in die Musterlösung."
+      },
+      "lookIntoSolutionTutorium": {
+        "label": "Musterlösung anschauen/Tutorium/Übungen besuchen",
+        "text": "- Am besten guckst du mal in die Musterlösung und/oder besuchst das Tutorium. Wenn du nicht weiterkommst, zögere nicht, uns zu fragen (im Forum / in den Übungen oder im Tutorium), wir helfen gerne."
       }
     }
   }
