@@ -180,6 +180,11 @@
         "task": "Resistor",
         "label": "Resistor: Falsche Formel",
         "text": "Deine Formel für die Paralelschaltung/Reihenschaltung ist leider nicht richtig implementiert."
+      },
+      "ResistorWrongFormular": {
+        "task": "Resistor",
+        "label": "Resistor: Alles in einer Datei",
+        "text": "Es funktioniert zwar in Java mehrere Klassen in eine Datei zu schreiben, jedoch ist das nicht sehr förderlich für die Wartbarkeit und Lesbarkeit des Programms. Daher wäre es hier auf jeden Fall besser mehrere Dateien anzulegen"
       }
     }
   },

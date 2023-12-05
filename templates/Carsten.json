@@ -44,6 +44,10 @@
         "label": "Schlecht",
         "text": "Guter Ansatz, aber das ist noch nicht ganz richtig."
       },
+      "wrong": {
+        "label": "Einfach Falsch",
+        "text": "Leider ist deine Abgabe nicht richtig"
+      },
       "wrongReason": {
         "label": "Falsche Begründungen",
         "text": "Leider sind deine Begründungen nicht sehr überzeugend/falsch."
@@ -152,6 +156,11 @@
         "label": "Zulassung: Tests laufen nicht mehr",
         "text": "Voraussetzung dafür, dass man die Punkte noch bekommt ist, dass alle Tests weiterhin durchlaufen. Man sollte ja lediglich das \"Aussehen\" verändern."
       },
+      "zulassungNotEnough": {
+        "task": "Zulassung",
+        "label": "Zulassung: Nicht genung verunstaltet",
+        "text": "Leider hast du zu wenige Punkte erfüllt was die Verunstaltung betrifft. Es gibt sehr viele Regel und man sollte mindestens 3 davon Brechen. Beispiele dafür sind:\n- sinnvolle Einrückung\n- nur ein Statement pro Zeile\n- sinnvolle Benennung von Variablen und Methoden\n- sinnvolle Kommentare\n- Behandlung von falscher Anzahl Argumente\n- einheitlicher Stil für Klammerung/Setzen von Leerzeichen\n- Benennung von Variablen mit lowerCamelCase, Klassen mit CamelCase\n- Variablen haben nur einen Zweck (keine Wiederverwendung)\n- Organisation von Code in Methoden\n- Organisation von Code in Klassen\n- minimale Sichtbarkeit für Instanzvariablen\n- Auslagerung von Konstanten\n- Benutzung von Effekt und Rückgabewert von i++ etc.\n- Sprechende Fehlermeldungen\n- ..."
+      },
       "zulassungBadSymbols": {
         "task": "Zulassung",
         "label": "Zulassung: Unanständiges Verhalten",
@@ -171,6 +180,11 @@
         "task": "Resistor",
         "label": "Resistor: Falsche Formel",
         "text": "Deine Formel für die Paralelschaltung/Reihenschaltung ist leider nicht richtig implementiert."
+      },
+      "ResistorWrongFormular": {
+        "task": "Resistor",
+        "label": "Resistor: Alles in einer Datei",
+        "text": "Es funktioniert zwar in Java mehrere Klassen in eine Datei zu schreiben, jedoch ist das nicht sehr förderlich für die Wartbarkeit und Lesbarkeit des Programms. Daher wäre es hier auf jeden Fall besser mehrere Dateien anzulegen"
       }
     }
   },
