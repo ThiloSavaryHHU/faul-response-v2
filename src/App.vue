@@ -7,7 +7,7 @@ import type {GenerativeOption, GenerativeSection, GenerativeSettings} from '@/ty
 import StyledButton from '@/components/StyledButton.vue';
 import StyledCheckbox from '@/components/StyledCheckbox.vue';
 import StyledSelect from '@/components/StyledSelect.vue';
-import NotesComponent from "@/NotesComponent.vue";
+import NotesComponent from '@/NotesComponent.vue';
 
 type State = {
   quality: string;
@@ -115,7 +115,7 @@ fetch('/responses.json').then((response) => {
 });
 
 function generateTextForSingleChoiceSection(
-    section: GenerativeSection, state: string | number, suffix: string = '\n', prefix: string = ''
+  section: GenerativeSection, state: string | number, suffix: string = '\n', prefix: string = ''
 ): string {
   const option = section.options.find((option) => option.value === state);
   if (!option) {
@@ -129,7 +129,7 @@ function generateTextForSingleChoiceSection(
 }
 
 function generateTextForMultipleChoiceSection(
-    section: GenerativeSection, state: string[], suffix: string = '\n', prefix: string = ''
+  section: GenerativeSection, state: string[], suffix: string = '\n', prefix: string = ''
 ): string {
   const options = section.options.filter((option) => state.includes(option.value));
   if (options.length === 0) {
