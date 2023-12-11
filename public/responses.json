@@ -17,6 +17,11 @@
       "Zulassung",
       "Racecar",
       "Resistor"
+    ],
+    "Blatt 9": [
+      "Interpolation",
+      "Cylinder",
+      "Examtask"
     ]
   },
   "quality": {
@@ -49,8 +54,12 @@
         "text": "Gut gemacht, allerdings haben sich noch ein paar Fehler eingeschlichen:"
       },
       "bad": {
-        "label": "Schlecht",
+        "label": "Ansatz Ok",
         "text": "Guter Ansatz, aber das ist noch nicht ganz richtig."
+      },
+      "wrong": {
+        "label": "Einfach Falsch",
+        "text": "Leider ist deine Abgabe nicht richtig"
       },
       "wrongReason": {
         "task": ["References"],
@@ -109,12 +118,12 @@
       "vokabelnToCharArray": {
         "task": "Vokabeln",
         "label": "Vokabeln: toCharArray()",
-        "text": "Es gibt in Java selbst eine Methode namens `toCharArray()`. Diese kann man auf einem String aufrufen, wenn man diesen als `char[]` haben will. Solche Abkürzungen sich zu suchen ist immer ganz praktisch, da man sich so viel Zeit spart.\nWeiteres dazu gibts hier: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/String.html#toCharArray()"
+        "text": "- Es gibt in Java selbst eine Methode namens `toCharArray()`. Diese kann man auf einem String aufrufen, wenn man diesen als `char[]` haben will. Solche Abkürzungen sich zu suchen ist immer ganz praktisch, da man sich so viel Zeit spart.\nWeiteres dazu gibts hier: https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/lang/String.html#toCharArray()"
       },
       "vokabelnNoGarantyMix": {
         "task": "Vokabeln",
         "label": "Vokabeln: Keine Mixed - Garantie",
-        "text": "Deine Vokabeln werden zwar durchgemixt, jedoch kann es bei dir vorkommen, dass die Vokabeln wieder zufällig in der richtigen Reihenfolge auftauchen. Das sollte nicht passieren. Du musst überprüfen, ob das geshuffelte Wort nicht gleich dem Originalwort ist. Falls die beiden gleich sind, musst du so lange das shuffeln wiederholen, bis du ein neues Wort raus hast."
+        "text": "- Deine Vokabeln werden zwar durchgemixt, jedoch kann es bei dir vorkommen, dass die Vokabeln wieder zufällig in der richtigen Reihenfolge auftauchen. Das sollte nicht passieren. Du musst überprüfen, ob das geshuffelte Wort nicht gleich dem Originalwort ist. Falls die beiden gleich sind, musst du so lange das shuffeln wiederholen, bis du ein neues Wort raus hast."
       },
       "shipNicePic": {
         "task": "Ship",
@@ -134,22 +143,22 @@
       "referencesHeapStack": {
         "task": "References",
         "label": "References: Heap/Stack",
-        "text": "Du hast leider nicht erwähnt, wie das Zusammenspiel von Heap und Stack bei dieser Aufgabe ist."
+        "text": "- Du hast leider nicht erwähnt, wie das Zusammenspiel von Heap und Stack bei dieser Aufgabe ist."
       },
       "referencesMethodCall": {
         "task": "References",
         "label": "References: Methodenaufruf/Stack Frame",
-        "text": "Es fehlt eine Erklärung, was beim Methodenaufruf passiert bzw. wie sich das auf den Stack auswirkt also was in den einzelnen Stack Frames passiert und wie sich das auf die anderen auswirkt."
+        "text": "- Es fehlt eine Erklärung, was beim Methodenaufruf passiert bzw. wie sich das auf den Stack auswirkt also was in den einzelnen Stack Frames passiert und wie sich das auf die anderen auswirkt."
       },
       "referencesExplanation": {
         "task": "References",
         "label": "References: Erklärung",
-        "text": "Das wichtigste hierbei ist, das auf dem Stack die Variablen der Methoden im jeweiligen Stack Frame der laufenden Methode gespeichert werden, bei primitiven Typen wird direkt der Wert gespeichert, bei komplexen wird die Adresse des Objektes im Heap gespeichert (in Java meistens Referenz genannt). Bei einem Methodenaufruf werden die übergebenen Parameter in den neuen Stack Frame der aufgerufenen Methode kopiert. Für primitive Typen wird der Wert kopiert, für komplexe der Wert der Adresse.\nDiese Kopie zu ändern, ändert aber nichts an den Originalen im alten Stack Frame. Verändern wir ein Objekt im Heap jedoch direkt, dann bekommen auch alle anderen Referenzen das mit."
+        "text": "- Das wichtigste hierbei ist, das auf dem Stack die Variablen der Methoden im jeweiligen Stack Frame der laufenden Methode gespeichert werden, bei primitiven Typen wird direkt der Wert gespeichert, bei komplexen wird die Adresse des Objektes im Heap gespeichert (in Java meistens Referenz genannt). Bei einem Methodenaufruf werden die übergebenen Parameter in den neuen Stack Frame der aufgerufenen Methode kopiert. Für primitive Typen wird der Wert kopiert, für komplexe der Wert der Adresse.\nDiese Kopie zu ändern, ändert aber nichts an den Originalen im alten Stack Frame. Verändern wir ein Objekt im Heap jedoch direkt, dann bekommen auch alle anderen Referenzen das mit."
       },
       "pascalNoRecursive": {
         "task": "Pascal",
         "label": "Pascal: Keine Rekursion",
-        "text": "In der Aufgabe war klar gefordert, die berechnung der Zahlen Rekursiv zu machen. Das hast du leider nicht gemacht."
+        "text": "- In der Aufgabe war klar gefordert, die berechnung der Zahlen Rekursiv zu machen. Das hast du leider nicht gemacht."
       },
       "pascalLastLineMissing": {
         "task": "Pascal",
@@ -159,22 +168,27 @@
       "rectangleUsedStatic": {
         "task": "Rectangle",
         "label": "Rectangle: Statische Sachen benutzt",
-        "text": "In der Aufgabe sollten wir uns eine Klasse so schreiben, dass wir sie als Instanzen, als Datentypen verwenden können.\n\nEs scheint, als wäre dir noch nicht so ganz klar, was der unterschied zwischen statisch und nicht-statisch ist. Ich werde das hier nur kurz anschneiden:\n\nWenn wir eine Klasse haben, welche Funktionen hat, welche immer das gleiche Verhalten (ein statisches) haben, dann nutzen wir statische Methoden und Variablen. Ein Beispiel dafür wäre die Klasse `Math` und ihre statsische Methode `Math.sqrt()`. Wir wollen natürlich nicht, dass die Wurzel von der Mathklasse abhängt, sonder nur von den Eingabeparametern.\nEin nicht-statischer Fall wäre eine Methode auf Strings, die ihr schon kennengelernt habt. Hier als Beispiel `myString.toCharArray()` das Array das da raus kommt soll natürlich von der Variable `myString` abhängen."
+        "text": "- In der Aufgabe sollten wir uns eine Klasse so schreiben, dass wir sie als Instanzen, als Datentypen verwenden können.\n\nEs scheint, als wäre dir noch nicht so ganz klar, was der unterschied zwischen statisch und nicht-statisch ist. Ich werde das hier nur kurz anschneiden:\n\nWenn wir eine Klasse haben, welche Funktionen hat, welche immer das gleiche Verhalten (ein statisches) haben, dann nutzen wir statische Methoden und Variablen. Ein Beispiel dafür wäre die Klasse `Math` und ihre statsische Methode `Math.sqrt()`. Wir wollen natürlich nicht, dass die Wurzel von der Mathklasse abhängt, sonder nur von den Eingabeparametern.\nEin nicht-statischer Fall wäre eine Methode auf Strings, die ihr schon kennengelernt habt. Hier als Beispiel `myString.toCharArray()` das Array das da raus kommt soll natürlich von der Variable `myString` abhängen."
       },
       "rectangleSimplerSquare": {
         "task": "Rectangle",
         "label": "Rectangle: isSquare() geht einfacher",
-        "text": "In `isSquare()` könntest du auch direkt `return width == height;` schreiben. Das ist wesentlich einfacher und sogar ein wenig performanter."
+        "text": "- In isSquare() könntest du auch direkt `return width == height;` schreiben. Das ist wesentlich einfacher, übersichtlicher und sogar ein wenig performanter."
       },
       "zulassungNomoreWorking": {
         "task": "Zulassung",
         "label": "Zulassung: Tests laufen nicht mehr",
-        "text": "Voraussetzung dafür, dass man die Punkte noch bekommt ist, dass alle Tests weiterhin durchlaufen. Man sollte ja lediglich das \"Aussehen\" verändern."
+        "text": "- Voraussetzung dafür, dass man die Punkte noch bekommt ist, dass alle Tests weiterhin durchlaufen. Man sollte ja lediglich das \"Aussehen\" verändern."
+      },
+      "zulassungNotEnough": {
+        "task": "Zulassung",
+        "label": "Zulassung: Nicht genung verunstaltet",
+        "text": "- Leider hast du zu wenige Punkte erfüllt was die Verunstaltung betrifft. Es gibt sehr viele Regel und man sollte mindestens 3 davon Brechen. Beispiele dafür sind:\n- sinnvolle Einrückung\n- nur ein Statement pro Zeile\n- sinnvolle Benennung von Variablen und Methoden\n- sinnvolle Kommentare\n- Behandlung von falscher Anzahl Argumente\n- einheitlicher Stil für Klammerung/Setzen von Leerzeichen\n- Benennung von Variablen mit lowerCamelCase, Klassen mit CamelCase\n- Variablen haben nur einen Zweck (keine Wiederverwendung)\n- Organisation von Code in Methoden\n- Organisation von Code in Klassen\n- minimale Sichtbarkeit für Instanzvariablen\n- Auslagerung von Konstanten\n- Benutzung von Effekt und Rückgabewert von i++ etc.\n- Sprechende Fehlermeldungen\n- ..."
       },
       "zulassungBadSymbols": {
         "task": "Zulassung",
         "label": "Zulassung: Unanständiges Verhalten",
-        "text": "Für ein friedliches Miteinander haben wir auch in unseren Abgaben Regeln. Dinge wie Hassrede oder Beleidigung sollte man in solchen Abgaben dementsprechend vermeiden."
+        "text": "- Für ein friedliches Miteinander haben wir auch in unseren Abgaben Regeln. Dinge wie Hassrede oder Beleidigung sollte man in solchen Abgaben dementsprechend vermeiden."
       },
       "zulassungFileMissing": {
         "task": "Zulassung",
@@ -184,7 +198,7 @@
       "RacecarUsedStatic": {
         "task": "Racecar",
         "label": "Racecar: Statische Sachen benutzt",
-        "text": "In der Aufgabe sollten wir uns eine Klasse so schreiben, dass wir sie als Instanzen, als Datentypen verwenden können.\n\nEs scheint, als wäre dir noch nicht so ganz klar, was der unterschied zwischen statisch und nicht-statisch ist. Ich werde das hier nur kurz anschneiden:\n\nWenn wir eine Klasse haben, welche Funktionen hat, welche immer das gleiche Verhalten (ein statisches) haben, dann nutzen wir statische Methoden und Variablen. Ein Beispiel dafür wäre die Klasse `Math` und ihre statsische Methode `Math.sqrt()`. Wir wollen natürlich nicht, dass die Wurzel von der Mathklasse abhängt, sonder nur von den Eingabeparametern.\nEin nicht-statischer Fall wäre eine Methode auf Strings, die ihr schon kennengelernt habt. Hier als Beispiel `myString.toCharArray()` das Array das da raus kommt soll natürlich von der Variable `myString` abhängen."
+        "text": "- In der Aufgabe sollten wir uns eine Klasse so schreiben, dass wir sie als Instanzen, als Datentypen verwenden können.\n\nEs scheint, als wäre dir noch nicht so ganz klar, was der unterschied zwischen statisch und nicht-statisch ist. Ich werde das hier nur kurz anschneiden:\n\nWenn wir eine Klasse haben, welche Funktionen hat, welche immer das gleiche Verhalten (ein statisches) haben, dann nutzen wir statische Methoden und Variablen. Ein Beispiel dafür wäre die Klasse `Math` und ihre statsische Methode `Math.sqrt()`. Wir wollen natürlich nicht, dass die Wurzel von der Mathklasse abhängt, sonder nur von den Eingabeparametern.\nEin nicht-statischer Fall wäre eine Methode auf Strings, die ihr schon kennengelernt habt. Hier als Beispiel `myString.toCharArray()` das Array das da raus kommt soll natürlich von der Variable `myString` abhängen."
       },
       "RacecarHasNextButUsedTwo": {
         "task": "Racecar",
@@ -194,22 +208,72 @@
       "ResistorNoFallthrough": {
         "task": "Resistor",
         "label": "Resistor: Werte nicht durchgereicht",
-        "text": "Hier sollte man in der Ausgabe die Abkapselung in verschiedene Schaltungen ausnutzen. Explizit bedeutet das, dass du beim Implementieren der Reihen- und Parallelschaltungen beim Berechnen von Widerstand oder Conter immer die abgespeicherten Widerstände benutzen solltest. So kann man das Interface nämlich voll ausnutzen und muss die Formel nur einmal richtig implementieren"
+        "text": "- Hier sollte man in der Ausgabe die Abkapselung in verschiedene Schaltungen ausnutzen. Explizit bedeutet das, dass du beim Implementieren der Reihen- und Parallelschaltungen beim Berechnen von Widerstand oder Conter immer die abgespeicherten Widerstände benutzen solltest. So kann man das Interface nämlich voll ausnutzen und muss die Formel nur einmal richtig implementieren."
       },
       "ResistorWrongFormular": {
         "task": "Resistor",
         "label": "Resistor: Falsche Formel",
-        "text": "Deine Formel für die Paralelschaltung/Reihenschaltung ist leider nicht richtig implementiert."
+        "text": "- Deine Formel für die Paralelschaltung/Reihenschaltung ist leider nicht richtig implementiert."
       },
-      "fieldsNotPrivate": {
-        "task": ["Resistor"],
-        "label": "Instanzvariablen nicht private",
-        "text": "Denk daran, dass wir sowenig wie möglich von einer Klasse nach außen sichtbar machen wollen. Deshalb sollten die Instanzvariablen eigentlich immer `private` sein."
-      },
-      "ResistorDontCalculateValuesInConstructor": {
+      "ResistorOneFile": {
         "task": "Resistor",
-        "label": "Resistor: Werte nicht im Konstruktor berechnen",
-        "text": "Du solltest die Werte nicht im Konstruktor berechnen, sondern erst, wenn sie gebraucht werden. Das ist wichtig, da wir sonst die Werte nicht mehr ändern können. Wenn wir einen der Widerstände auswechseln, müssten wir die Werte neu berechnen. Es ist also besser, die Werte erst zu berechnen, wenn sie gebraucht werden."
+        "label": "Resistor: Alles in einer Datei",
+        "text": "- Es funktioniert zwar in Java mehrere Klassen in eine Datei zu schreiben, jedoch ist das nicht sehr förderlich für die Wartbarkeit und Lesbarkeit des Programms. Daher wäre es hier auf jeden Fall besser mehrere Dateien anzulegen."
+      },
+      "InterpolWrongSplit": {
+        "task": "Interpolation",
+        "label": "Interpolation: Split falsche Formel",
+        "text": "- Um den Splitindex zu finden solltest du die Formel Implementieren, welche auf dem Blatt steht. Das hast du leider nicht getan."
+      },
+      "InterpolWrongSerach": {
+        "task": "Interpolation",
+        "label": "Interpolation: Falsch gesucht",
+        "text": "- Dein Suchalgorithmus ist leider nicht der, welcher von der Aufgabenstellung gefordert war."
+      },
+      "InterpolDivisionByZero": {
+        "task": "Interpolation",
+        "label": "Interpolation: Division By Zero",
+        "text": "- Du hast in deiner Split-Methode den Fehler, dass du da nicht aufpasst, ob du nicht ggf. durch 0 teilst. Das kann vorkommen, wenn `haystack[rіght] == haystack[left]` gilt."
+      },
+      "InterpolIntDivision": {
+        "task": "Interpolation",
+        "label": "Interpolation: Integer Division",
+        "text": "- Deine Formel gibt leider nicht den Richtigen Index aus. Da liegt daran, das du eine Integerdivision durchführst, statt mit Kommazahlen zu rechnen. Man sollte erst zum Schluss die Zahl zu einem Integer Casten."
+      },
+      "InterpolCheckIfEmpty": {
+        "task": "Interpolation",
+        "label": "Interpolation: Leeres Eingabearray",
+        "text": "- Du hast nicht überprüft ob das eingegebene Array vielleicht leer ist. Du versuchst dann in einem Leeren Array zu suchen, was natürlich nicht funktioniert."
+      },
+      "CylinderNoCopy": {
+        "task": "Cylinder",
+        "label": "Cylinder: Keine Kopie",
+        "text": "- Leider hast du beim Sortieren das Ursprungsarray verändert. Aufgabe war es aber dieses unverändert zu lassen. Dazu hätte man in der Sortier-Methode ein neues Array erstellen müssen und die Werte da entsprechend reinkopieren müssen.\nEin Beispiel dafür, wie man das macht wäre: \n```java\nint[] copy = new int[numbers.length];\nfor(int i = 0; i < copy.length; i++){\n\tcopy[i] = numbers[i];\n}\n```\n(hier nur für ein Integerarray gezeigt)"
+      },
+      "CylinderWrongOutput": {
+        "task": "Cylinder",
+        "label": "Cylinder: Falscher falscher Output",
+        "text": "- Auf dem Arbeitsblatt gab es wohl kurzeitig einen Formatierungsfehler. Bei der Ausgabe erwarten die Tests eigentlich Leerzeichen, welche auf dem Beispiel auf dem Blatt aber teilweiße gefehlt haben."
+      },
+      "CylinderVolumeNotWorking": {
+        "task": "Cylinder",
+        "label": "Cylinder: Volume() Falsch",
+        "text": "- Leider ist deine Volumen-Methode falsch und berechnet nicht das richtige."
+      },
+      "ExamtaskWeakTask": {
+        "task": "Examtask",
+        "label": "Examtask: Schwammige Aufgabenstellung",
+        "text": "- Die Aufgabenstellung hat vielleicht noch ein Schlupfloch, da sie etwas schwammig ist. Aber noch ok."
+      },
+      "ExamtaskWeakReason": {
+        "task": "Examtask",
+        "label": "Examtask: Schwammige Lösung",
+        "text": "- Ich glaube in deiner Lösung haben sich noch ein paar kleine Fehler eingeschlossen, aber noch ok."
+      },
+      "ExamtaskNoGoal": {
+        "task": "Examtask",
+        "label": "Examtask: Kein Lernziel",
+        "text": "- Du hast leider kein Lernziel angegeben. Beispiele dafür wären etwa: Umgang mit Array, switch-case Verständniss, etc..."
       }
     }
   },
