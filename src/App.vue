@@ -7,6 +7,7 @@ import type {GenerativeOption, GenerativeSection, GenerativeSettings} from '@/ty
 import StyledButton from '@/components/StyledButton.vue';
 import StyledCheckbox from '@/components/StyledCheckbox.vue';
 import StyledSelect from '@/components/StyledSelect.vue';
+import NotesComponent from '@/NotesComponent.vue';
 
 type State = {
   quality: string;
@@ -22,7 +23,7 @@ const urlState = JSON.parse(url.searchParams.get('state') ?? '{}');
 const points = ref(url.searchParams.get('points') ?? 1);
 const maxPoints = ref(url.searchParams.get('maxPoints') ?? 1);
 
-const tasks = ref<string[]>([])
+const tasks = ref<{[x: string]: string}>({})
 const task = ref(url.searchParams.get('task') ?? '---')
 
 console.debug(urlState)
@@ -59,7 +60,9 @@ type ResponseDataGenerativeOptions = {
 }
 
 type ResponseData = {
-  tasks: string[],
+  tasks: {
+    [x: string]: string
+  },
   quality: {
     options: ResponseDataGenerativeOptions
   },
@@ -94,7 +97,7 @@ function responseToGenerativeOptions(response: ResponseDataGenerativeOptions): G
 fetch('/responses.json').then((response) => {
   response.json().then((data) => data as ResponseData).then((data) => {
     console.debug(data)
-    tasks.value = ['---'].concat(data.tasks ?? []);
+    tasks.value = data.tasks ?? {} as { [x: string]: string };
 
     options.quality.options = responseToGenerativeOptions(data.quality.options);
     if (options.quality.options.length > 0 && state.quality === '') {
@@ -168,7 +171,7 @@ function reset(): void {
 
 function filterOptions(options: GenerativeOption[], task: string): GenerativeOption[] {
   return options.filter((option) => {
-    if (typeof(option.task) === 'string') {
+    if (typeof (option.task) === 'string') {
       if (option.task === '__all__') {
         return !option.excluded.includes(task)
       } else {
@@ -211,8 +214,11 @@ watch([points, maxPoints, state, task], () => {
                      type="number" class="w-full"/>
         <StyledInput id="maxPoints" v-model="maxPoints" label="Max Punkte" placeholder="Max Punkte"
                      type="number" class="w-full"/>
-        <StyledSelect id="task" v-model="task" v-if="tasks.length > 0" label="Aufgabe">
-          <option v-for="t in tasks" :value="t" :key="t">{{ t }}</option>
+        <StyledSelect id="task" v-model="task" label="Aufgabe">
+          <option value="---">---</option>
+          <optgroup v-for="group in Object.keys(tasks)" :label="group" :key="group">
+            <option v-for="task in tasks[group]" :value="task" :key="task">{{ task }}</option>
+          </optgroup>
         </StyledSelect>
         <!--        <StyledSelect id="task" v-model="task" label="Aufgabe" class="w-full">-->
         <!--          <optgroup label="Blatt 1">-->
@@ -228,11 +234,13 @@ watch([points, maxPoints, state, task], () => {
                       title="Ingesamte Qualität"/>
         </div>
         <div class="p-2" v-if="filterOptions(options.taskErrors.options, task).length > 0">
-          <CheckboxGroup :options="filterOptions(options.taskErrors.options, task)" name="quality" v-model="state.taskErrors"
+          <CheckboxGroup :options="filterOptions(options.taskErrors.options, task)" name="quality"
+                         v-model="state.taskErrors"
                          title="Aufgabenspezifische Fehler"/>
         </div>
         <div class="p-2" v-if="filterOptions(options.syntaxErrors.options, task).length > 0">
-          <CheckboxGroup :options="filterOptions(options.syntaxErrors.options, task)" name="syntaxErrors" v-model="state.syntaxErrors"
+          <CheckboxGroup :options="filterOptions(options.syntaxErrors.options, task)" name="syntaxErrors"
+                         v-model="state.syntaxErrors"
                          title="Syntax"/>
         </div>
         <div class="p-2" v-if="filterOptions(options.extra.options, task).length > 0">
@@ -243,22 +251,27 @@ watch([points, maxPoints, state, task], () => {
       </div>
     </div>
 
-    <div class="rounded-lg border border-slate-200 shadow-lg  bg-slate-100 flex-1 overflow-scroll ">
-      <div class="p-2 flex justify-between">
-        <StyledButton @click="copyTextToClipboard(text)">Kopieren</StyledButton>
-        <StyledButton @click="reset()">Reset</StyledButton>
-        <StyledButton @click="generateText()">Neu generieren</StyledButton>
-      </div>
-      <div class="p-2">
+    <div class="rounded-lg border border-slate-200 shadow-lg  bg-slate-100 flex-1 overflow-scroll flex flex-col">
+      <div>
+        <div class="p-2 flex justify-between">
+          <StyledButton @click="copyTextToClipboard(text)">Kopieren</StyledButton>
+          <StyledButton @click="reset()">Reset</StyledButton>
+          <StyledButton @click="generateText()">Neu generieren</StyledButton>
+        </div>
+        <div class="p-2">
         <textarea
             :value="text"
             @input="text = ($event.target as HTMLInputElement).value"
             class="bg-white p-2 border rounded-lg shadow w-full h-96 outline-none"
             :readonly="!canEdit"
         ></textarea>
+        </div>
+        <div class="flex pr-4 justify-end">
+          <StyledCheckbox id="editable" v-model:checked="canEdit" label="Editierbar"/>
+        </div>
       </div>
-      <div class="flex pr-4 justify-end">
-        <StyledCheckbox id="editable" v-model:checked="canEdit" label="Editierbar"/>
+      <div class="flex-1 pt-2">
+        <NotesComponent/>
       </div>
     </div>
   </div>

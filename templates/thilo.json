@@ -1,17 +1,24 @@
 {
-  "comment": "Einiges von Carsten kopiert ^^",
-  "tasks": [
-    "Vokabeln",
-    "Ship",
-    "Skytale",
-    "Plateau",
-    "References",
-    "Pascal",
-    "Rectangle",
-    "Zulassung",
-    "Racecar",
-    "Resistor"
-  ],
+  "tasks": {
+    "Blatt 5": [
+      "Ship"
+    ],
+    "Blatt 6": [
+      "Vokabeln",
+      "Skytale",
+      "Plateau"
+    ],
+    "Blatt 7": [
+      "References",
+      "Pascal",
+      "Rectangle"
+    ],
+    "Blatt 8": [
+      "Zulassung",
+      "Racecar",
+      "Resistor"
+    ]
+  },
   "quality": {
     "options": {
       "good1": {
@@ -46,10 +53,12 @@
         "text": "Guter Ansatz, aber das ist noch nicht ganz richtig."
       },
       "wrongReason": {
+        "task": ["References"],
         "label": "Falsche Begründungen",
         "text": "Leider sind deine Begründungen nicht sehr überzeugend/falsch."
       },
       "missingReason": {
+        "task": ["References"],
         "label": "Begründungen fehlen",
         "text": "Leider fehlen deine Begründungen."
       },
@@ -79,6 +88,10 @@
           "Schade, nichts abgegeben :(",
           "Es wurde leider nichts abgegeben :("
         ]
+      },
+      "Zero": {
+        "label": "∅",
+        "text": ""
       }
     }
   },
@@ -138,6 +151,11 @@
         "label": "Pascal: Keine Rekursion",
         "text": "In der Aufgabe war klar gefordert, die berechnung der Zahlen Rekursiv zu machen. Das hast du leider nicht gemacht."
       },
+      "pascalLastLineMissing": {
+        "task": "Pascal",
+        "label": "Pascal: Letzte Zeile fehlt",
+        "text": "Du hast eine Zeile zu wenig ausgeben, bei $n=5$ wollten wir, dass die ersten 6 Reihen ausgeben werden (wird ersichtlich, wenn du die Anzahl der Zeilen im Beispiel zählst)."
+      },
       "rectangleUsedStatic": {
         "task": "Rectangle",
         "label": "Rectangle: Statische Sachen benutzt",
@@ -146,7 +164,7 @@
       "rectangleSimplerSquare": {
         "task": "Rectangle",
         "label": "Rectangle: isSquare() geht einfacher",
-        "text": "In isSquare() könntest du auch direkt `return width == height;` schreiben. Das ist wesentlich einfacher, übersichtlicher und sogar ein wenig performanter."
+        "text": "In `isSquare()` könntest du auch direkt `return width == height;` schreiben. Das ist wesentlich einfacher und sogar ein wenig performanter."
       },
       "zulassungNomoreWorking": {
         "task": "Zulassung",
@@ -158,10 +176,20 @@
         "label": "Zulassung: Unanständiges Verhalten",
         "text": "Für ein friedliches Miteinander haben wir auch in unseren Abgaben Regeln. Dinge wie Hassrede oder Beleidigung sollte man in solchen Abgaben dementsprechend vermeiden."
       },
+      "zulassungFileMissing": {
+        "task": "Zulassung",
+        "label": "Zulassung: Datei Fehlt",
+        "text": "Damit der Code funktioniert, müssen beide Dateien (`Studi.java` und `Zulassung.java`) hochgeladen werden. So laufen unsere Tests nicht durch und ich kann dir leider keine Punkte geben."
+      },
       "RacecarUsedStatic": {
         "task": "Racecar",
         "label": "Racecar: Statische Sachen benutzt",
         "text": "In der Aufgabe sollten wir uns eine Klasse so schreiben, dass wir sie als Instanzen, als Datentypen verwenden können.\n\nEs scheint, als wäre dir noch nicht so ganz klar, was der unterschied zwischen statisch und nicht-statisch ist. Ich werde das hier nur kurz anschneiden:\n\nWenn wir eine Klasse haben, welche Funktionen hat, welche immer das gleiche Verhalten (ein statisches) haben, dann nutzen wir statische Methoden und Variablen. Ein Beispiel dafür wäre die Klasse `Math` und ihre statsische Methode `Math.sqrt()`. Wir wollen natürlich nicht, dass die Wurzel von der Mathklasse abhängt, sonder nur von den Eingabeparametern.\nEin nicht-statischer Fall wäre eine Methode auf Strings, die ihr schon kennengelernt habt. Hier als Beispiel `myString.toCharArray()` das Array das da raus kommt soll natürlich von der Variable `myString` abhängen."
+      },
+      "RacecarHasNextButUsedTwo": {
+        "task": "Racecar",
+        "label": "Racecar: hasNext() einmal, zwei mal next()",
+        "text": "Kleiner Hinweis:\nAuch wenn es hier funktioniert (selbst die Musterlösung macht es so), sei vorsichtig, wenn du mehrere Inputs von einem User erwartest: Du hast hier auf ein weiteres Token geprüft (mit `hasNext()`), aber dann zweimal `next()` (oder Varianten davon) aufgerufen. Wenn der Nutzer jetzt \"accelerate\" eingibt und danach EOF (also nichts mehr eingeben möchte) stürzt dein Programm ab, da es ja noch ein weiteres Token vom Scanner erwartet. Hier wäre es besser mit `nextLine()` sich den ganzen String zu holen und dann mit `split()` die entsprechenden Teile zu trennen."
       },
       "ResistorNoFallthrough": {
         "task": "Resistor",
@@ -172,6 +200,16 @@
         "task": "Resistor",
         "label": "Resistor: Falsche Formel",
         "text": "Deine Formel für die Paralelschaltung/Reihenschaltung ist leider nicht richtig implementiert."
+      },
+      "fieldsNotPrivate": {
+        "task": ["Resistor"],
+        "label": "Instanzvariablen nicht private",
+        "text": "Denk daran, dass wir sowenig wie möglich von einer Klasse nach außen sichtbar machen wollen. Deshalb sollten die Instanzvariablen eigentlich immer `private` sein."
+      },
+      "ResistorDontCalculateValuesInConstructor": {
+        "task": "Resistor",
+        "label": "Resistor: Werte nicht im Konstruktor berechnen",
+        "text": "Du solltest die Werte nicht im Konstruktor berechnen, sondern erst, wenn sie gebraucht werden. Das ist wichtig, da wir sonst die Werte nicht mehr ändern können. Wenn wir einen der Widerstände auswechseln, müssten wir die Werte neu berechnen. Es ist also besser, die Werte erst zu berechnen, wenn sie gebraucht werden."
       }
     }
   },
@@ -198,6 +236,11 @@
         "label": "if/while/for/else ohne Klammern",
         "text": "- Bitte nutze nach if/while/for/else immer die `{ }` Klammern."
       },
+      "multipleStatementsPerLine": {
+        "excluded": ["References"],
+        "label": "Mehrere Anweisungen pro Zeile",
+        "text": "- Bitte schreibe nur eine Anweisung pro Zeile. (mit ganz speziellen Ausnahmen)"
+      },
       "toManyBlankLines": {
         "excluded": ["References"],
         "label": "Zu viele Leerzeilen",
@@ -217,6 +260,11 @@
         "excluded": ["References"],
         "label": "Kommentare fehlen",
         "text": "- Hier wäre es vielleicht sinnvoll, Kommentare zu schreiben, besonders an den schweren Stellen (wie mehreren `for` Schleifen ineinander) oder bei der Behandlung von Sonderfällen."
+      },
+      "describingComments": {
+        "excluded": ["References"],
+        "label": "Beschreibende Kommentare",
+        "text": "- Es ist sehr vorbildlich, ausführlich Kommentare zu schreiben. Allerdings solltest du dabei weniger beschreiben, was du tust (das kann man ja am Code ablesen), sondern eher warum du etwas tust. Natürlich ist es manchmal auch sinnvoll das was zu beschreiben, immer dann, wenn der Code das nicht mit einem Blick hergibt. Gute Variablen/Klassen/Methoden Namen sorgen meistens dafür, dass man Code wie einen Kommentar lesen kann."
       }
     }
   },
@@ -270,7 +318,7 @@
       "scannerWithSystemInClosed": {
         "excluded": ["References"],
         "label": "Scanner mit System.in geschlossen",
-        "text": "- An sich ist es richtig, dass wir einen Scanner schließen, das ist bei Java mit System.in aber ein Sonderfall: einen Scanner auf System.in wollen wir in Java meistens nie selber schließen: https://coderanch.com/wiki/678613/Don-close-Scanner-tied-System"
+        "text": "- An sich ist es richtig, dass wir einen Scanner schließen, das ist bei Java mit `System.in` aber ein Sonderfall: einen Scanner auf `System.in` wollen wir in Java meistens nie selber schließen: https://coderanch.com/wiki/678613/Don-close-Scanner-tied-System"
       },
       "errorStreamInsteadOfOut": {
         "excluded": ["References"],
@@ -289,6 +337,11 @@
       "lookIntoSolutionTutorium": {
         "label": "Musterlösung anschauen/Tutorium/Übungen besuchen",
         "text": "- Am besten guckst du mal in die Musterlösung und/oder besuchst das Tutorium. Wenn du nicht weiterkommst, zögere nicht, uns zu fragen (im Forum / in den Übungen oder im Tutorium), wir helfen gerne."
+      },
+      "multipleClassesInOneFile": {
+        "task": ["Resistor", "Racecar"],
+        "label": "Mehrere Klassen in einer Datei",
+        "text": "- Bitte nur eine Klasse/ein Interface pro Datei."
       }
     }
   }
