@@ -9,7 +9,10 @@
     "Rectangle",
     "Zulassung",
     "Racecar",
-    "Resistor"
+    "Resistor",
+    "Interpolation",
+    "Cylinder",
+    "Examtask"
   ],
   "quality": {
     "options": {
@@ -41,7 +44,7 @@
         "text": "Gut gemacht, allerdings haben sich noch ein paar Fehler eingeschlichen:"
       },
       "bad": {
-        "label": "Schlecht",
+        "label": "Ansatz Ok",
         "text": "Guter Ansatz, aber das ist noch nicht ganz richtig."
       },
       "wrong": {
@@ -174,17 +177,72 @@
       "ResistorNoFallthrough": {
         "task": "Resistor",
         "label": "Resistor: Werte nicht durchgereicht",
-        "text": "Hier sollte man in der Ausgabe die Abkapselung in verschiedene Schaltungen ausnutzen. Explizit bedeutet das, dass du beim Implementieren der Reihen- und Parallelschaltungen beim Berechnen von Widerstand oder Conter immer die abgespeicherten Widerstände benutzen solltest. So kann man das Interface nämlich voll ausnutzen und muss die Formel nur einmal richtig implementieren"
+        "text": "Hier sollte man in der Ausgabe die Abkapselung in verschiedene Schaltungen ausnutzen. Explizit bedeutet das, dass du beim Implementieren der Reihen- und Parallelschaltungen beim Berechnen von Widerstand oder Conter immer die abgespeicherten Widerstände benutzen solltest. So kann man das Interface nämlich voll ausnutzen und muss die Formel nur einmal richtig implementieren."
       },
       "ResistorWrongFormular": {
         "task": "Resistor",
         "label": "Resistor: Falsche Formel",
         "text": "Deine Formel für die Paralelschaltung/Reihenschaltung ist leider nicht richtig implementiert."
       },
-      "ResistorWrongFormular": {
+      "ResistorOneFile": {
         "task": "Resistor",
         "label": "Resistor: Alles in einer Datei",
-        "text": "Es funktioniert zwar in Java mehrere Klassen in eine Datei zu schreiben, jedoch ist das nicht sehr förderlich für die Wartbarkeit und Lesbarkeit des Programms. Daher wäre es hier auf jeden Fall besser mehrere Dateien anzulegen"
+        "text": "Es funktioniert zwar in Java mehrere Klassen in eine Datei zu schreiben, jedoch ist das nicht sehr förderlich für die Wartbarkeit und Lesbarkeit des Programms. Daher wäre es hier auf jeden Fall besser mehrere Dateien anzulegen."
+      },
+      "InterpolWrongSplit": {
+        "task": "Interpolation",
+        "label": "Interpolation: Split falsche Formel",
+        "text": "Um den Splitindex zu finden solltest du die Formel Implementieren, welche auf dem Blatt steht. Das hast du leider nicht getan."
+      },
+      "InterpolWrongSerach": {
+        "task": "Interpolation",
+        "label": "Interpolation: Falsch gesucht",
+        "text": "Dein Suchalgerithmus ist leider nicht der, welcher von der Aufgabenstellung gefordert war."
+      },
+      "InterpolDivisionByZero": {
+        "task": "Interpolation",
+        "label": "Interpolation: Division By Zero",
+        "text": "Du hast in deiner Split-Methode den Fehler, dass du da nicht aufpasst, ob du nicht ggf. durch 0 teilst. Das kann vorkommen, wenn `haystack[rіght] == haystack[left]` gilt."
+      },
+      "InterpolIntDivision": {
+        "task": "Interpolation",
+        "label": "Interpolation: Integer Division",
+        "text": "Deine Formel gibt leider nicht den Richtigen Index aus. Da liegt daran, das du eine Integerdivision durchführst, statt mit Kommazahlen zu rechnen. Man sollte erst zum Schluss die Zahl zu einem Integer Casten."
+      },
+      "InterpolCheckIfEmpty": {
+        "task": "Interpolation",
+        "label": "Interpolation: Leeres Eingabearray",
+        "text": "Du hast nicht überprüft ob das eingegebene Array vielleicht leer ist. Du versuchst dann in einem Leeren Array zu suchen, was natürlich nicht funktioniert."
+      },
+      "CylinderNoCopy": {
+        "task": "Cylinder",
+        "label": "Cylinder: Keine Kopie",
+        "text": "Leider hast du beim Sortieren das Ursprungsarray verändert. Aufgabe war es aber dieses unverändert zu lassen. Dazu hätte man in der Sortier-Methode ein neues Array erstellen müssen und die Werte da entsprechend reinkopieren müssen.\nEin Beispiel dafür, wie man das macht wäre: \n```java\nint[] copy = new int[numbers.length];\nfor(int i = 0; i < copy.length; i++){\n\tcopy[i] = numbers[i];\n}\n```\n(hier nur für ein Integerarray gezeigt)"
+      },
+      "CylinderWrongOutput": {
+        "task": "Cylinder",
+        "label": "Cylinder: Falscher falscher Output",
+        "text": "Auf dem Arbeitsblatt gab es wohl kurzeitig einen Formatierungsfehler. Bei der Ausgabe erwarten die Tests eigentlich Leerzeichen, welche auf dem Beispiel auf dem Blatt aber teilweiße gefehlt haben."
+      },
+      "CylinderVolumeNotWorking": {
+        "task": "Cylinder",
+        "label": "Cylinder: Volume() Falsch",
+        "text": "Leider ist deine Volumen-Methode falsch und berechnet nicht das richtige."
+      },
+      "ExamtaskWeakTask": {
+        "task": "Examtask",
+        "label": "Examtask: Schwammige Aufgabenstellung",
+        "text": "Die Aufgabenstellung hat vielleicht noch ein Schlupfloch, da sie etwas schwammig ist. Aber noch ok."
+      },
+      "ExamtaskWeakReason": {
+        "task": "Examtask",
+        "label": "Examtask: Schwammige Lösung",
+        "text": "Ich glaube in deiner Lösung haben sich noch ein paar kleine Fehler eingeschlossen, aber noch ok."
+      },
+      "ExamtaskNoGoal": {
+        "task": "Examtask",
+        "label": "Examtask: Kein Lernziel",
+        "text": "Du hast leider kein Lernziel angegeben. Beispiele dafür wären etwa: Umgang mit Array, switch-case Verständniss, etc..."
       }
     }
   },
