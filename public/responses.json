@@ -26,6 +26,9 @@
     "Blatt 10": [
       "ListVSArray",
       "List"
+    ],
+    "Blatt 11": [
+      "Widgets"
     ]
   },
   "quality": {
@@ -57,6 +60,10 @@
         "label": "Gut mit kleinen Fehlern",
         "text": "Gut gemacht, allerdings haben sich noch ein paar Fehler eingeschlichen:"
       },
+      "somethingMissing": {
+        "label": "Teile Fehlen",
+        "text": "Es fehlt leider noch ein Teil der Aufgabe."
+      },
       "bad": {
         "label": "Ansatz ok",
         "text": "Guter Ansatz, aber das ist noch nicht ganz richtig."
@@ -65,28 +72,33 @@
         "label": "Einfach Falsch",
         "text": "Leider ist deine Abgabe nicht richtig"
       },
+      "noPlainText": {
+        "task": ["References", "ListVSArray", "Widgets"],
+        "label": "nicht als Plaintext",
+        "text": "[FORMAT] gelten leider nicht als Plain-Text. Da aber von der Aufgabenstellung streng Plain-Text gefordert war dürfen wir diese Abgabe nicht korrigieren. Das nächste mal die Datei in einem Format wie `.txt`, `.md` oder `.adoc` abgeben."
+      },
       "wrongReason": {
         "task": ["References"],
         "label": "Falsche Begründungen",
         "text": "Leider sind deine Begründungen nicht sehr überzeugend/falsch."
       },
       "missingReason": {
-        "task": ["References"],
+        "task": ["References", "ListVSArray"],
         "label": "Begründungen fehlen",
         "text": "Leider fehlen deine Begründungen."
       },
       "noCompile": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Compiliert nicht",
         "text": "Leider kompiliert dein Programm nicht. Am besten testest du vor der Abgabe zumindest mal, ob das Programm überhaupt kompiliert. Oft wird einem bei der Fehlermeldung auch gesagt, was man falsch gemacht hat. Ansonsten kannst du natürlich immer gerne an sämtlichen Stellen nachfragen, wenn du nicht mehr weiter kommst.\nExplizit bei dir kompiliert es nicht aufgrund [Grund angeben]"
       },
       "wrongFileName": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Dateiname falsch",
         "text": "Schade, leider hast du deine Datei falsch benannt, sie sollte [Dateiname] heißen. Deshalb gibt es für diese Abgabe keine Punkte. Achte das nächste mal darauf, dass die Tests durchlaufen."
       },
       "wrongClassName": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Klassennamen falsch",
         "text": "Leider hast du deine Klasse falsch benannt, der Name muss exakt wie auf dem Übungsblatt sein. Deshalb gibt es für diese Abgabe keine Punkte. Achte das nächste mal darauf, dass die Tests durchlaufen."
       },
@@ -309,59 +321,78 @@
         "task": "Examtask",
         "label": "Examtask: Kein Lernziel",
         "text": "- Du hast leider kein Lernziel angegeben. Beispiele dafür wären etwa: Umgang mit Array, switch-case Verständniss, etc..."
+      },
+      "ListVsArrayWrongReason": {
+        "task": "ListVSArray",
+        "label": "ListVSArray: Begründung Falsch",
+        "text": "- Deine Begründung ist leider Falsch. Ein Array kann man nur beutzten, wenn man vorher die Größe der Daten schon kennt, da man es bei Laufzeit nicht mehr vergrößern kann. Dafür kann man schnell auf einzelne Indices zugreifen\nListen auf der anderen Seite können zwar \"beliebig\" wachsen (bis der Speicher voll läuft) aber man muss immer Stück für Stück durch die Liste durch, wenn man an einen bestimmten Index will. Daher ist sie zwar geeignet um Variable Datenmengen zu speichern, jedoch nicht um auf diese Effizient zuzugreifen"
+      },
+      "ListVsArrayWrong": {
+        "task": "ListVSArray",
+        "label": "ListVSArray: Angabe Falsch",
+        "text": "- Deine Antwort ist leider Falsch. Hilmar sollte ein Array benutzen für den schnellen Zugriff und Lisa eine Liste für die Variable größe. Ein Array kann man nur beutzten, wenn man vorher die Größe der Daten schon kennt, da man es bei Laufzeit nicht mehr vergrößern kann. Dafür kann man schnell auf einzelne Indices zugreifen\nListen auf der anderen Seite können zwar \"beliebig\" wachsen (bis der Speicher voll läuft) aber man muss immer Stück für Stück durch die Liste durch, wenn man an einen bestimmten Index will. Daher ist sie zwar geeignet um Variable Datenmengen zu speichern, jedoch nicht um auf diese Effizient zuzugreifen"
       }
     }
   },
   "syntaxErrors": {
     "intro": "Zur Syntax:",
     "options": {
+      "checkStyleBonusOnce": {
+        "excluded": ["References", "ListVSArray"],
+        "label": "Checkstyle gibt einen Fehler",
+        "text": "- Unsere Automatische Syntax-Style Überprüfung hat gefunden, dass du an einer Stelle ([ZEILE]) nicht konsistent mit den Vorgaben warst. Daher keine Bonuspunkte."
+      },"checkStyleBonus": {
+        "excluded": ["References", "ListVSArray"],
+        "label": "Checkstyle gibt mehrere Fehler",
+        "text": "- Unsere Automatische Syntax-Style Überprüfung hat gefunden, dass du an einigen Stellen nicht konsistent mit den Vorgaben warst. Daher keine Bonuspunkte."
+      },
       "indent": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Einrückung fehlerhaft",
         "text": "- Achte bitte auf die Einrückung, damit der Code lesbar wird. (siehe Vorlesung 1)"
       },
       "badVariableName": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Variable unschön benannt",
         "text": "- Achte auf deine Variablen/Methodenbezeichnungen, damit klar ist, was sie speichern/machen.\n a, foo, tmp sind beispielsweise keine guten Namen."
       },
       "ifWhileForInline": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "if/while/for/else inline",
         "text": "- Bitte nutze keine Einzeiler für if/while/for/else Blöcke. Wir wollen eine Anweisung pro Zeile (mit ganz speziellen Ausnahmen) schreiben."
       },
       "ifWhileForWithoutBraces": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "if/while/for/else ohne Klammern",
         "text": "- Bitte nutze nach if/while/for/else immer die `{ }` Klammern."
       },
       "multipleStatementsPerLine": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Mehrere Anweisungen pro Zeile",
         "text": "- Bitte schreibe nur eine Anweisung pro Zeile. (mit ganz speziellen Ausnahmen)"
       },
       "toManyBlankLines": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Zu viele Leerzeilen",
         "text": "- Du hast ein paar viele Leerzeilen verwendet."
       },
       "noBlankLines": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Keine Leerzeilen",
         "text": "- Du hast keine Leerzeilen verwendet. Mit Leerzeilen kannst du logische Blöcke voneinander trennen, das macht den Code leichter lesbar."
       },
       "wrongCasing": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Falsche Groß-/Kleinschreibung",
         "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen/Methodennamen werden in lowerCamelCase geschrieben und Klassennamen in UpperCamelCase. (s. Vorlesungsfolien 2)"
       },
       "commentsMissing": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Kommentare fehlen",
         "text": "- Hier wäre es vielleicht sinnvoll, Kommentare zu schreiben, besonders an den schweren Stellen (wie mehreren `for` Schleifen ineinander) oder bei der Behandlung von Sonderfällen."
       },
       "describingComments": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Beschreibende Kommentare",
         "text": "- Es ist sehr vorbildlich, ausführlich Kommentare zu schreiben. Allerdings solltest du dabei weniger beschreiben, was du tust (das kann man ja am Code ablesen), sondern eher warum du etwas tust. Natürlich ist es manchmal auch sinnvoll das was zu beschreiben, immer dann, wenn der Code das nicht mit einem Blick hergibt. Gute Variablen/Klassen/Methoden Namen sorgen meistens dafür, dass man Code wie einen Kommentar lesen kann."
       }
@@ -371,42 +402,42 @@
     "intro": "Weitere Anmerkung(en):",
     "options": {
       "==insteadOfEquals": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "== statt equals",
         "text": "- Verwende `.equals` statt `==` um Strings zu vergleichen."
       },
       "system.exit": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "System.exit",
         "text": "- Bitte kein `System.exit()` nutzen, unsere Tests mögen das nicht."
       },
       "misleadingErrorMessages": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Irreführende Fehlermeldungen",
         "text": "- Bitte achte darauf, dass deine Fehlermeldungen nicht \"falsch\" sind. Wenn du beispielsweise auf `args.length != 1` prüfst, deine Fehlermeldung aber *\"ERROR: Keine Argumente übergeben\"* lautet, bekommt der Nutzer die Fehlermeldung auch, wenn er 2 oder mehr Argumente übergibt. Das ist irreführend."
       },
       "blaError": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Nichts aussagende Fehlermeldung",
         "text": "- Bitte achte darauf, dass deine Fehlermeldungen etwas aussagen. Wenn du beispielsweise auf `args.length != 1` prüfst, deine Fehlermeldung aber *\"ERROR: Error\"* lautet, weiß der Nutzer nicht, was er falsch gemacht hat. (Ja, das mag nervig sein, aber es ist wichtig, das direkt zu üben und sich zu verinnerlichen.)"
       },
       "errorElseNester": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Fehler verschachtelt (mit else)",
         "text": "- Bitte beende dein Programm bei der Überprüfung der Nutzereingabe bei fehlerhafter Eingabe mit einem `return` und verwende keinen else Block für den eigentlichen Code. Bei vielen Fehlerüberprüfungen kann es sonst passieren, dass du ganz viele `else` Blöcke hast und der eigentliche Code ganz weit eingerückt ist. Also aus \n\n ```java\n if(args.length != 1){\n    ...\n} else {\n    // Der eigentliche Code\n}\n```\n\n wird \n\n```java\nif(args.length != 1){\n    ...\n    return;\n}\n// Der eigentliche Code\n```"
       },
       "stupidErrorElseNester": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Fehler verschachtelt (mit else) - trotz return",
         "text": "- Wenn du in der Fehlerüberprüfung `return` verwendest, kannst du den eigentlichen Code auch ohne `else` schreiben. Also aus \n\n ```java\n if(args.length != 1){\n    ...\n    return;\n}\nelse {\n    // Der eigentliche Code\n}\n```\n\n wird \n\n```java\nif(args.length != 1){\n    ...\n    return;\n}\n// Der eigentliche Code\n```"
       },
       "ErrorIfNester": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Fehler verschachtelt (mit if)",
         "text": "- Es ist oft sinnvoll, zuerst auf die Fehler zu überprüfen, und dann den eigentlichen Code auszuführen. Sonst kann es bei vielen Fehlerüberprüfungen passieren, dass du ganz viele verschachtelte if Blöcke hast und der eigentliche Code ganz weit eingerückt ist. Also aus \n\n ```java\n if(args.length > 0){\n    // Der eigentliche Code\n} else {\n    //Fehlermeldung\n}\n```\n\n wird \n\n```java\nif(args.length == 0){\n    //Fehlermeldung\n    return;\n}\n// Der eigentliche Code\n```"
       },
       ".class": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": ".class Datei hochgeladen",
         "text": "- Die .class Datein brauchen wir nicht, bitte nur die .java Datei hochladen."
       },
@@ -415,12 +446,12 @@
         "text": "- Lade bitte nur immer eine Datei (sofern nicht anders angegeben) hoch. Falls du mal eine falsche Datei hochlädst, lösche sie bitte wieder. [Wie das geht kannst du im Tutorial zum Abgabesystem nachlesen](https://hsp.pages.cs.uni-duesseldorf.de/programmierung/website/lectures/progra/tutorials/classroom/#falsch-hochgeladene-dateien-l%C3%B6schen)."
       },
       "scannerWithSystemInClosed": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Scanner mit System.in geschlossen",
         "text": "- An sich ist es richtig, dass wir einen Scanner schließen, das ist bei Java mit `System.in` aber ein Sonderfall: einen Scanner auf `System.in` wollen wir in Java meistens nie selber schließen: https://coderanch.com/wiki/678613/Don-close-Scanner-tied-System"
       },
       "errorStreamInsteadOfOut": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "System.err statt System.out",
         "text": "- Bitte verwende `System.out` statt `System.err` für die Ausgabe. Unsere Tests prüfen nur `System.out`."
       },
