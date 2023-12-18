@@ -22,6 +22,10 @@
       "Interpolation",
       "Cylinder",
       "Examtask"
+    ],
+    "Blatt 10": [
+      "ListVSArray",
+      "List"
     ]
   },
   "quality": {
@@ -54,8 +58,12 @@
         "text": "Gut gemacht, allerdings haben sich noch ein paar Fehler eingeschlichen:"
       },
       "bad": {
-        "label": "Schlecht",
+        "label": "Ansatz ok",
         "text": "Guter Ansatz, aber das ist noch nicht ganz richtig."
+      },
+      "wrong": {
+        "label": "Einfach Falsch",
+        "text": "Leider ist deine Abgabe nicht richtig"
       },
       "wrongReason": {
         "task": ["References"],
@@ -140,17 +148,17 @@
       "referencesHeapStack": {
         "task": "References",
         "label": "References: Heap/Stack",
-        "text": "Du hast leider nicht erwähnt, wie das Zusammenspiel von Heap und Stack bei dieser Aufgabe ist."
+        "text": "- Du hast leider nicht erwähnt, wie das Zusammenspiel von Heap und Stack bei dieser Aufgabe ist."
       },
       "referencesMethodCall": {
         "task": "References",
         "label": "References: Methodenaufruf/Stack Frame",
-        "text": "Es fehlt eine Erklärung, was beim Methodenaufruf passiert bzw. wie sich das auf den Stack auswirkt also was in den einzelnen Stack Frames passiert und wie sich das auf die anderen auswirkt."
+        "text": "- Es fehlt eine Erklärung, was beim Methodenaufruf passiert bzw. wie sich das auf den Stack auswirkt also was in den einzelnen Stack Frames passiert und wie sich das auf die anderen auswirkt."
       },
       "referencesExplanation": {
         "task": "References",
         "label": "References: Erklärung",
-        "text": "Das wichtigste hierbei ist, das auf dem Stack die Variablen der Methoden im jeweiligen Stack Frame der laufenden Methode gespeichert werden, bei primitiven Typen wird direkt der Wert gespeichert, bei komplexen wird die Adresse des Objektes im Heap gespeichert (in Java meistens Referenz genannt). Bei einem Methodenaufruf werden die übergebenen Parameter in den neuen Stack Frame der aufgerufenen Methode kopiert. Für primitive Typen wird der Wert kopiert, für komplexe der Wert der Adresse.\nDiese Kopie zu ändern, ändert aber nichts an den Originalen im alten Stack Frame. Verändern wir ein Objekt im Heap jedoch direkt, dann bekommen auch alle anderen Referenzen das mit."
+        "text": "- Das wichtigste hierbei ist, das auf dem Stack die Variablen der Methoden im jeweiligen Stack Frame der laufenden Methode gespeichert werden, bei primitiven Typen wird direkt der Wert gespeichert, bei komplexen wird die Adresse des Objektes im Heap gespeichert (in Java meistens Referenz genannt). Bei einem Methodenaufruf werden die übergebenen Parameter in den neuen Stack Frame der aufgerufenen Methode kopiert. Für primitive Typen wird der Wert kopiert, für komplexe der Wert der Adresse.\nDiese Kopie zu ändern, ändert aber nichts an den Originalen im alten Stack Frame. Verändern wir ein Objekt im Heap jedoch direkt, dann bekommen auch alle anderen Referenzen das mit."
       },
       "referencesExample": {
         "task": "References",
@@ -182,10 +190,15 @@
         "label": "Zulassung: Tests laufen nicht mehr",
         "text": "- Voraussetzung dafür, dass man die Punkte noch bekommt ist, dass alle Tests weiterhin durchlaufen. Man sollte ja lediglich das \"Aussehen\" verändern."
       },
+      "zulassungNotEnough": {
+        "task": "Zulassung",
+        "label": "Zulassung: Nicht genung verunstaltet",
+        "text": "- Leider hast du zu wenige Punkte erfüllt was die Verunstaltung betrifft. Es gibt sehr viele Regel und man sollte mindestens 3 davon Brechen. Beispiele dafür sind:\n- sinnvolle Einrückung\n- nur ein Statement pro Zeile\n- sinnvolle Benennung von Variablen und Methoden\n- sinnvolle Kommentare\n- Behandlung von falscher Anzahl Argumente\n- einheitlicher Stil für Klammerung/Setzen von Leerzeichen\n- Benennung von Variablen mit lowerCamelCase, Klassen mit CamelCase\n- Variablen haben nur einen Zweck (keine Wiederverwendung)\n- Organisation von Code in Methoden\n- Organisation von Code in Klassen\n- minimale Sichtbarkeit für Instanzvariablen\n- Auslagerung von Konstanten\n- Benutzung von Effekt und Rückgabewert von i++ etc.\n- Sprechende Fehlermeldungen\n- ..."
+      },
       "zulassungBadSymbols": {
         "task": "Zulassung",
         "label": "Zulassung: Unanständiges Verhalten",
-        "text": "Für ein friedliches Miteinander haben wir auch in unseren Abgaben Regeln. Dinge wie Hassrede oder Beleidigung sollte man in solchen Abgaben dementsprechend vermeiden."
+        "text": "- Für ein friedliches Miteinander haben wir auch in unseren Abgaben Regeln. Dinge wie Hassrede oder Beleidigung sollte man in solchen Abgaben dementsprechend vermeiden."
       },
       "zulassungFileMissing": {
         "task": "Zulassung",
@@ -210,9 +223,9 @@
       "ResistorWrongFormular": {
         "task": "Resistor",
         "label": "Resistor: Falsche Formel",
-        "text": "Deine Formel für die Paralelschaltung/Reihenschaltung ist leider nicht richtig implementiert."
+        "text": "- Deine Formel für die Paralelschaltung/Reihenschaltung ist leider nicht richtig implementiert."
       },
-      "fieldsNotPrivate": {
+      "ResistorfieldsNotPrivate": {
         "task": ["Resistor"],
         "label": "Instanzvariablen nicht private",
         "text": "Denk daran, dass wir sowenig wie möglich von einer Klasse nach außen sichtbar machen wollen. Deshalb sollten die Instanzvariablen eigentlich immer `private` sein."
