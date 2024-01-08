@@ -22,6 +22,13 @@
       "Interpolation",
       "Cylinder",
       "Examtask"
+    ],
+    "Blatt 10": [
+      "ListVSArray",
+      "List"
+    ],
+    "Blatt 11": [
+      "Widgets"
     ]
   },
   "quality": {
@@ -53,34 +60,45 @@
         "label": "Gut mit kleinen Fehlern",
         "text": "Gut gemacht, allerdings haben sich noch ein paar Fehler eingeschlichen:"
       },
+      "somethingMissing": {
+        "label": "Teile Fehlen",
+        "text": "Es fehlt leider noch ein Teil der Aufgabe."
+      },
       "bad": {
-        "label": "Ansatz Ok",
+        "label": "Ansatz ok",
         "text": "Guter Ansatz, aber das ist noch nicht ganz richtig."
       },
       "wrong": {
         "label": "Einfach Falsch",
         "text": "Leider ist deine Abgabe nicht richtig"
       },
+      "noPlainText": {
+        "task": ["References", "ListVSArray", "Widgets"],
+        "label": "nicht als Plaintext",
+        "text": "[FORMAT] gelten leider nicht als Plain-Text. Da aber von der Aufgabenstellung streng Plain-Text gefordert war dürfen wir diese Abgabe nicht korrigieren. Das nächste mal die Datei in einem Format wie `.txt`, `.md` oder `.adoc` abgeben."
+      },
       "wrongReason": {
+        "task": ["References"],
         "label": "Falsche Begründungen",
         "text": "Leider sind deine Begründungen nicht sehr überzeugend/falsch."
       },
       "missingReason": {
+        "task": ["References", "ListVSArray"],
         "label": "Begründungen fehlen",
         "text": "Leider fehlen deine Begründungen."
       },
       "noCompile": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Compiliert nicht",
         "text": "Leider kompiliert dein Programm nicht. Am besten testest du vor der Abgabe zumindest mal, ob das Programm überhaupt kompiliert. Oft wird einem bei der Fehlermeldung auch gesagt, was man falsch gemacht hat. Ansonsten kannst du natürlich immer gerne an sämtlichen Stellen nachfragen, wenn du nicht mehr weiter kommst.\nExplizit bei dir kompiliert es nicht aufgrund [Grund angeben]"
       },
       "wrongFileName": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Dateiname falsch",
         "text": "Schade, leider hast du deine Datei falsch benannt, sie sollte [Dateiname] heißen. Deshalb gibt es für diese Abgabe keine Punkte. Achte das nächste mal darauf, dass die Tests durchlaufen."
       },
       "wrongClassName": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Klassennamen falsch",
         "text": "Leider hast du deine Klasse falsch benannt, der Name muss exakt wie auf dem Übungsblatt sein. Deshalb gibt es für diese Abgabe keine Punkte. Achte das nächste mal darauf, dass die Tests durchlaufen."
       },
@@ -95,17 +113,22 @@
           "Schade, nichts abgegeben :(",
           "Es wurde leider nichts abgegeben :("
         ]
+      },
+      "Zero": {
+        "label": "∅",
+        "text": ""
       }
     }
   },
   "taskErrors": {
     "options": {
       "allArgsUsedBeforeCheck": {
-        "excluded": ["References"],
+        "excluded": ["References", "Examtask"],
         "label": "Argument verwendet vor Check",
         "text": "- Du hast ein Argument verwendet (also auf `args[n-1]` zugegriffen), bevor du überprüft hast, ob es überhaupt existiert (also überprüft hast, ob `args.length` mindestens `n`). Das kann zu Abstürzen führen."
       },
       "wrongFormat": {
+        "excluded": ["References", "Examtask"],
         "label": "Falsches Ausgabeformat",
         "text": "- Leider hast du dich nicht an das Ausgabeformat gehalten. So laufen unsere Tests nicht durch. Auch wenn es an manchen Stellen hier etwas banal klingt ist es vor allem später unglaublich wichtig sich wirklich an die Vorgaben zu halten, wie ein Programm Dinge aus und zurück gibt. Allerspätestens wenn man mit mehreren Personen arbeitet."
       },
@@ -149,10 +172,20 @@
         "label": "References: Erklärung",
         "text": "- Das wichtigste hierbei ist, das auf dem Stack die Variablen der Methoden im jeweiligen Stack Frame der laufenden Methode gespeichert werden, bei primitiven Typen wird direkt der Wert gespeichert, bei komplexen wird die Adresse des Objektes im Heap gespeichert (in Java meistens Referenz genannt). Bei einem Methodenaufruf werden die übergebenen Parameter in den neuen Stack Frame der aufgerufenen Methode kopiert. Für primitive Typen wird der Wert kopiert, für komplexe der Wert der Adresse.\nDiese Kopie zu ändern, ändert aber nichts an den Originalen im alten Stack Frame. Verändern wir ein Objekt im Heap jedoch direkt, dann bekommen auch alle anderen Referenzen das mit."
       },
+      "referencesExample": {
+        "task": "References",
+        "label": "References: Beispiel",
+        "text": "Schönes anschauliches Beispiel für den Unterschied von Referenz und Objekt-Daten [haben wir seit 22/23 auch im Ilias]:\\n\\nStelle dir vor zu hast einen allgemeinen Spind und einen Schlüssel dazu. Wenn du jemandem Zugriff gewähren möchtest, gibst du ihm nicht den Spind und auch nicht deinen Schlüssel, sondern eine Kopie des Schlüssels. Auf so einem Schlüssel steht dann immer eine Spindnummer, damit man weiß, zu welchem Spind der Schlüssel gehört.\\n\\nDer Spind stellt die Objekt-Daten dar, dein Schlüssel ist die Referenz in der `main` und die Kopie des Schlüssels ist der Parameter.\\n\\nWenn jetzt die Person, der du den Schlüssel gegeben hast, den Schlüssel verändert, verändert sich nichts an deinem Schlüssel und auch nichts am Spind, aber wenn diese Person den Spind leerräumt, hat das auch eine Auswirkung auf dich.\\n\\nAusgabe 3 wäre der Fall, dass die Person den Schlüssel verändert. Ausgabe 2 hingegen ist der Fall dass der Spind leergeräumt wird. Bei Ausgabe 1 gibt es keinen Schlüssel und du sagst der Person einfach, was sich in dem Spind befindet."
+      },
       "pascalNoRecursive": {
         "task": "Pascal",
         "label": "Pascal: Keine Rekursion",
         "text": "- In der Aufgabe war klar gefordert, die berechnung der Zahlen Rekursiv zu machen. Das hast du leider nicht gemacht."
+      },
+      "pascalLastLineMissing": {
+        "task": "Pascal",
+        "label": "Pascal: Letzte Zeile fehlt",
+        "text": "- Du hast eine Zeile zu wenig ausgeben, bei $n=5$ wollten wir, dass die ersten 6 Reihen ausgeben werden (wird ersichtlich, wenn du die Anzahl der Zeilen im Beispiel zählst)."
       },
       "rectangleUsedStatic": {
         "task": "Rectangle",
@@ -162,7 +195,7 @@
       "rectangleSimplerSquare": {
         "task": "Rectangle",
         "label": "Rectangle: isSquare() geht einfacher",
-        "text": "- In isSquare() könntest du auch direkt `return width == height;` schreiben. Das ist wesentlich einfacher, übersichtlicher und sogar ein wenig performanter."
+        "text": "- In `isSquare()` könntest du auch direkt `return width == height;` schreiben. Das ist wesentlich einfacher und sogar ein wenig performanter."
       },
       "zulassungNomoreWorking": {
         "task": "Zulassung",
@@ -179,10 +212,20 @@
         "label": "Zulassung: Unanständiges Verhalten",
         "text": "- Für ein friedliches Miteinander haben wir auch in unseren Abgaben Regeln. Dinge wie Hassrede oder Beleidigung sollte man in solchen Abgaben dementsprechend vermeiden."
       },
+      "zulassungFileMissing": {
+        "task": "Zulassung",
+        "label": "Zulassung: Datei Fehlt",
+        "text": "- Damit der Code funktioniert, müssen beide Dateien (`Studi.java` und `Zulassung.java`) hochgeladen werden. So laufen unsere Tests nicht durch und ich kann dir leider keine Punkte geben."
+      },
       "RacecarUsedStatic": {
         "task": "Racecar",
         "label": "Racecar: Statische Sachen benutzt",
         "text": "- In der Aufgabe sollten wir uns eine Klasse so schreiben, dass wir sie als Instanzen, als Datentypen verwenden können.\n\nEs scheint, als wäre dir noch nicht so ganz klar, was der unterschied zwischen statisch und nicht-statisch ist. Ich werde das hier nur kurz anschneiden:\n\nWenn wir eine Klasse haben, welche Funktionen hat, welche immer das gleiche Verhalten (ein statisches) haben, dann nutzen wir statische Methoden und Variablen. Ein Beispiel dafür wäre die Klasse `Math` und ihre statsische Methode `Math.sqrt()`. Wir wollen natürlich nicht, dass die Wurzel von der Mathklasse abhängt, sonder nur von den Eingabeparametern.\nEin nicht-statischer Fall wäre eine Methode auf Strings, die ihr schon kennengelernt habt. Hier als Beispiel `myString.toCharArray()` das Array das da raus kommt soll natürlich von der Variable `myString` abhängen."
+      },
+      "RacecarHasNextButUsedTwo": {
+        "task": "Racecar",
+        "label": "Racecar: hasNext() einmal, zwei mal next()",
+        "text": "Kleiner Hinweis:\nAuch wenn es hier funktioniert (selbst die Musterlösung macht es so), sei vorsichtig, wenn du mehrere Inputs von einem User erwartest: Du hast hier auf ein weiteres Token geprüft (mit `hasNext()`), aber dann zweimal `next()` (oder Varianten davon) aufgerufen. Wenn der Nutzer jetzt \"accelerate\" eingibt und danach EOF (also nichts mehr eingeben möchte) stürzt dein Programm ab, da es ja noch ein weiteres Token vom Scanner erwartet. Hier wäre es besser mit `nextLine()` sich den ganzen String zu holen und dann mit `split()` die entsprechenden Teile zu trennen."
       },
       "ResistorNoFallthrough": {
         "task": "Resistor",
@@ -194,10 +237,15 @@
         "label": "Resistor: Falsche Formel",
         "text": "- Deine Formel für die Paralelschaltung/Reihenschaltung ist leider nicht richtig implementiert."
       },
-      "ResistorOneFile": {
+      "ResistorfieldsNotPrivate": {
+        "task": ["Resistor"],
+        "label": "Instanzvariablen nicht private",
+        "text": "Denk daran, dass wir sowenig wie möglich von einer Klasse nach außen sichtbar machen wollen. Deshalb sollten die Instanzvariablen eigentlich immer `private` sein."
+      },
+      "ResistorDontCalculateValuesInConstructor": {
         "task": "Resistor",
-        "label": "Resistor: Alles in einer Datei",
-        "text": "- Es funktioniert zwar in Java mehrere Klassen in eine Datei zu schreiben, jedoch ist das nicht sehr förderlich für die Wartbarkeit und Lesbarkeit des Programms. Daher wäre es hier auf jeden Fall besser mehrere Dateien anzulegen."
+        "label": "Resistor: Werte nicht im Konstruktor berechnen",
+        "text": "Du solltest die Werte nicht im Konstruktor berechnen, sondern erst, wenn sie gebraucht werden. Das ist wichtig, da wir sonst die Werte nicht mehr ändern können. Wenn wir einen der Widerstände auswechseln, müssten wir die Werte neu berechnen. Es ist also besser, die Werte erst zu berechnen, wenn sie gebraucht werden."
       },
       "InterpolWrongSplit": {
         "task": "Interpolation",
@@ -209,20 +257,30 @@
         "label": "Interpolation: Falsch gesucht",
         "text": "- Dein Suchalgorithmus ist leider nicht der, welcher von der Aufgabenstellung gefordert war."
       },
+      "InterpolWrongSerach-NoSplit": {
+        "task": "Interpolation",
+        "label": "Interpolation: Falsch gesucht - Kein Split",
+        "text": "- Dein Suchalgorithmus verwendet leider nicht die `split` Methode, was von der Aufgabenstellung gefordert war. (-5P)"
+      },
       "InterpolDivisionByZero": {
         "task": "Interpolation",
         "label": "Interpolation: Division By Zero",
-        "text": "- Du hast in deiner Split-Methode den Fehler, dass du da nicht aufpasst, ob du nicht ggf. durch 0 teilst. Das kann vorkommen, wenn `haystack[rіght] == haystack[left]` gilt."
+        "text": "- In der `split` Methode prüfst du nicht, ob `haysteck[left] == haystack[right]` (in der Formel war das der Fall $A[l] = A[r]$) ist. In diesem Fall sollten wir einfach `left` zurückgeben. Wenn wir das nicht machen, teilen wir durch 0, wenn `haysteck[left] == haystack[right]` ist."
       },
       "InterpolIntDivision": {
         "task": "Interpolation",
         "label": "Interpolation: Integer Division",
-        "text": "- Deine Formel gibt leider nicht den Richtigen Index aus. Da liegt daran, das du eine Integerdivision durchführst, statt mit Kommazahlen zu rechnen. Man sollte erst zum Schluss die Zahl zu einem Integer Casten."
+        "text": "- Deine Formel gibt leider nicht den richtigen Index aus. Da liegt daran, dass du eine Integerdivision durchführst, statt mit Doubles zu rechnen. Dadurch werden Nachkommastellen abgeschnitten. Man sollte erst zum Double und am Ende die Zahl wieder zu einem Integer casten (alternativ kann man auch erst multiplizieren und am Ende dividieren, dann reichen Integer)."
       },
       "InterpolCheckIfEmpty": {
         "task": "Interpolation",
         "label": "Interpolation: Leeres Eingabearray",
         "text": "- Du hast nicht überprüft ob das eingegebene Array vielleicht leer ist. Du versuchst dann in einem Leeren Array zu suchen, was natürlich nicht funktioniert."
+      },
+      "InterpolCheckIfInRange": {
+        "task": "Interpolation",
+        "label": "Interpolation: Index außerhalb Suchbereich nicht geprüft",
+        "text": "- Du hast nicht überprüft, ob unser `currentIndex` innerhalb des Suchbereichs liegt. (Nach Aufgabenstellung müssen wir bei jeder Iteration in `search` prüfen, ob $A[l] \\leq v \\leq A[r]$ ist.) Falls dem nicht so ist, soll die Suche erfolglos abgebrochen werden, also -1 zurückgegeben werden."
       },
       "CylinderNoCopy": {
         "task": "Cylinder",
@@ -239,6 +297,16 @@
         "label": "Cylinder: Volume() Falsch",
         "text": "- Leider ist deine Volumen-Methode falsch und berechnet nicht das richtige."
       },
+      "CylinderSortedNotManual": {
+        "task": "Cylinder",
+        "label": "Cylinder: Nicht manuell sortiert",
+        "text": "- Du hast die Zylinder nicht manuell sortieren und eine der Sortiermethoden aus der Java Bibliothek verwendet, das war nicht erlaubt. (-5P)"
+      },
+      "CylinderWrongPrecision": {
+        "task": "Cylinder",
+        "label": "Cylinder: Falsche Präzision",
+        "text": "- Deine Zylinder `toString()` Methode eine falsche Präzision, du rundest Höhe und Radius auf eine Nachkommastelle und nicht auf die geforderten 5. (-1P)"
+      },
       "ExamtaskWeakTask": {
         "task": "Examtask",
         "label": "Examtask: Schwammige Aufgabenstellung",
@@ -253,51 +321,170 @@
         "task": "Examtask",
         "label": "Examtask: Kein Lernziel",
         "text": "- Du hast leider kein Lernziel angegeben. Beispiele dafür wären etwa: Umgang mit Array, switch-case Verständniss, etc..."
+      },
+      "ListVsArrayWrongReason": {
+        "task": "ListVSArray",
+        "label": "ListVSArray: Begründung Falsch",
+        "text": "- Deine Begründung ist leider Falsch. Ein Array kann man nur beutzten, wenn man vorher die Größe der Daten schon kennt, da man es bei Laufzeit nicht mehr vergrößern kann. Dafür kann man schnell auf einzelne Indices zugreifen\nListen auf der anderen Seite können zwar \"beliebig\" wachsen (bis der Speicher voll läuft) aber man muss immer Stück für Stück durch die Liste durch, wenn man an einen bestimmten Index will. Daher ist sie zwar geeignet um Variable Datenmengen zu speichern, jedoch nicht um auf diese Effizient zuzugreifen"
+      },
+      "ListVsArrayWrong": {
+        "task": "ListVSArray",
+        "label": "ListVSArray: Angabe Falsch",
+        "text": "- Deine Antwort ist leider Falsch. Hilmar sollte ein Array benutzen für den schnellen Zugriff und Lisa eine Liste für die Variable größe. Ein Array kann man nur beutzten, wenn man vorher die Größe der Daten schon kennt, da man es bei Laufzeit nicht mehr vergrößern kann. Dafür kann man schnell auf einzelne Indices zugreifen\nListen auf der anderen Seite können zwar \"beliebig\" wachsen (bis der Speicher voll läuft) aber man muss immer Stück für Stück durch die Liste durch, wenn man an einen bestimmten Index will. Daher ist sie zwar geeignet um Variable Datenmengen zu speichern, jedoch nicht um auf diese Effizient zuzugreifen"
+      },
+      "WidgetsNoVisual": {
+        "task": "Widgets",
+        "label": "Widgets: Fehlender Visueler Output",
+        "text": "- Leider wird bei deinem Programm kein Textfeld mit ausgegeben"
+      },
+      "WidgetsWrongVisual": {
+        "task": "Widgets",
+        "label": "Widgets: Visuelles != Vorlage",
+        "text": "- Die Ausgabe welche du erzeugt hast ist leider nicht nah genug an der Vorgabe dran"
+      },
+      "WidgetsOtherChanged": {
+        "task": "Widgets",
+        "label": "Widgets: Vorlage verändert",
+        "text": "- Du solltest den Code in den vorgegeben Dateien (Außer der Application.java) nicht abändern, sondern nur eine einzige eigene Klasse schreiben"
+      },
+      "WidgetsTextMissing": {
+        "task": "Widgets",
+        "label": "Widgets: keine Textabgabe",
+        "text": "- Du hast leider die Textaufgaben nicht bearbeitet"
+      },
+      "WidgetsNoSTDout": {
+        "task": "Widgets",
+        "label": "Widgets: Std Output fehlt",
+        "text": "- Das Programm sollte auf die Standardausgabe irgendwo \n`TextField(200x25),\nTextField(200x25){disabled},`\nstehen haben"
+      },
+      "WidgetsWrongPlainHead": {
+        "task": "Widgets",
+        "label": "Widgets: Plain Text Fehler",
+        "text": "\nBei deinen geschriebenen Aufgaben sind leider Fehler mit dabei. Hier die richtigen Musterantworten:"
+      },
+      "WidgetsWrongPlain1": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 1",
+        "text": "* (1) 5 Klassen erben von Widget. Davon direkt `Button`, `Label` und `Layout`. Indirekt über `Layout` erben `VerticalLayout` und `HorizontalLayout`"
+      },
+      "WidgetsWrongPlain2": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 2",
+        "text": "* (2) Die Konstruktoren der Unterklassen rufen (ggf. automatisch) einen Konstruktor der Oberklasse auf. In der Regel über `super()` Also wird z. B. auch durch new `VerticalLayout()` der `Widget`-Konstruktor aufgerufen"
+      },
+      "WidgetsWrongPlain3": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 3",
+        "text": "* (3) Layout ist eine Oberklasse von `VerticalLayout`. Gemäß den Regeln für Polymorphie kann ein `VerticalLayout` auch einer Variablen mit Obertyp (`Layout`) zugewiesen werden."
+      },
+      "WidgetsWrongPlain4": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 4",
+        "text": "* (4) Es gibt eine add Methode, die ein (beliebiges) Widget nimmt. Da `Labels` auch `Widgets` sind (Polymorphie), funktioniert der Aufruf."
+      },
+      "WidgetsWrongPlain5": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 5",
+        "text": "* (5) final ist nur der Inhalt der Variablen `widgets`, also die Referenz. Die referenzierten Heap-Daten können trotzdem verändert werden. Es ist aber nicht möglich, `widgets` auf eine andere Liste zeigen zu lassen, dafür kann man Elemente einfügen, löschen, etc."
+      },
+      "WidgetsWrongPlain6": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 6",
+        "text": "* (6) Auf einer Variable können nur Methoden aufgerufen werden, die zum Datentyp gehören, mit dem die Variable deklariert wurde, unabhängig davon, welchen Typ das gerade in der Variable gespeicherte Objekt hat."
+      },
+      "WidgetsWrongPlain7": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 7",
+        "text": "* (7) enabled ist in der Oberklasse `privat` und kann deshalb in den Unterklassen nicht benutzt werden. (Hinweis: Jede `Button`-Instanz hat trotzdem das Feld `enabled`, wir können es nur nicht direkt in der Klasse verändern oder lesen.)"
+      },
+      "WidgetsWrongPlain8": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 8",
+        "text": "* (8) Die Klasse enthält eine abstrakte Methode (also eine Methode ohne Implementierung) und muss deshalb als abstrakt deklariert werden."
+      },
+      "WidgetsWrongPlain9": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 9",
+        "text": "* (9) Die `toString`-Methode von `Object` wird überschrieben, da ausnahmslos jede Klasse in Java von der Klasse `Object` erbt"
+      },
+      "WidgetsWrongPlain10": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 10",
+        "text": "* (10) `getWidth()` muss in abgeleiteten, nicht-abstrakten Klassen überschrieben werden. Da nur von nicht-abstrakten Klassen Instanzen erzeugt werden können, ist sichergestellt, dass zur Laufzeit eine Implementierung von `getWidth()` vorhanden ist."
+      },
+      "WidgetsWrongPlain11": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 11",
+        "text": "* (11) `Layout` erbt abstrakte Methoden von `Widget` ."
+      },
+      "WidgetsWrongPlain12": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 12",
+        "text": "* (12) Eine möglichkeit das in einem If-Statement zu verpacken wäre:\n```java\nif(isEnabled()){\n\tStdDraw.setPenColor(StdDraw.BLACK);\n} else {\n\tStdDraw.setPenColor(StdDraw.GRAY);\n}\n```"
       }
     }
   },
   "syntaxErrors": {
     "intro": "Zur Syntax:",
     "options": {
+      "checkStyleBonusOnce": {
+        "excluded": ["References", "ListVSArray"],
+        "label": "Checkstyle gibt einen Fehler",
+        "text": "- Unsere Automatische Syntax-Style Überprüfung hat gefunden, dass du an einer Stelle ([ZEILE]) nicht konsistent mit den Vorgaben warst. Daher keine Bonuspunkte."
+      },"checkStyleBonus": {
+        "excluded": ["References", "ListVSArray"],
+        "label": "Checkstyle gibt mehrere Fehler",
+        "text": "- Unsere Automatische Syntax-Style Überprüfung hat gefunden, dass du an einigen Stellen nicht konsistent mit den Vorgaben warst. Daher keine Bonuspunkte."
+      },
       "indent": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Einrückung fehlerhaft",
         "text": "- Achte bitte auf die Einrückung, damit der Code lesbar wird. (siehe Vorlesung 1)"
       },
       "badVariableName": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Variable unschön benannt",
         "text": "- Achte auf deine Variablen/Methodenbezeichnungen, damit klar ist, was sie speichern/machen.\n a, foo, tmp sind beispielsweise keine guten Namen."
       },
       "ifWhileForInline": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "if/while/for/else inline",
         "text": "- Bitte nutze keine Einzeiler für if/while/for/else Blöcke. Wir wollen eine Anweisung pro Zeile (mit ganz speziellen Ausnahmen) schreiben."
       },
       "ifWhileForWithoutBraces": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "if/while/for/else ohne Klammern",
         "text": "- Bitte nutze nach if/while/for/else immer die `{ }` Klammern."
       },
+      "multipleStatementsPerLine": {
+        "excluded": ["References", "ListVSArray"],
+        "label": "Mehrere Anweisungen pro Zeile",
+        "text": "- Bitte schreibe nur eine Anweisung pro Zeile. (mit ganz speziellen Ausnahmen)"
+      },
       "toManyBlankLines": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Zu viele Leerzeilen",
         "text": "- Du hast ein paar viele Leerzeilen verwendet."
       },
       "noBlankLines": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Keine Leerzeilen",
         "text": "- Du hast keine Leerzeilen verwendet. Mit Leerzeilen kannst du logische Blöcke voneinander trennen, das macht den Code leichter lesbar."
       },
       "wrongCasing": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Falsche Groß-/Kleinschreibung",
         "text": "- Achte auf die Java Konventionen zur Groß-/Kleinschreibung: Variablennamen/Methodennamen werden in lowerCamelCase geschrieben und Klassennamen in UpperCamelCase. (s. Vorlesungsfolien 2)"
       },
       "commentsMissing": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Kommentare fehlen",
         "text": "- Hier wäre es vielleicht sinnvoll, Kommentare zu schreiben, besonders an den schweren Stellen (wie mehreren `for` Schleifen ineinander) oder bei der Behandlung von Sonderfällen."
+      },
+      "describingComments": {
+        "excluded": ["References", "ListVSArray"],
+        "label": "Beschreibende Kommentare",
+        "text": "- Es ist sehr vorbildlich, ausführlich Kommentare zu schreiben. Allerdings solltest du dabei weniger beschreiben, was du tust (das kann man ja am Code ablesen), sondern eher warum du etwas tust. Natürlich ist es manchmal auch sinnvoll das was zu beschreiben, immer dann, wenn der Code das nicht mit einem Blick hergibt. Gute Variablen/Klassen/Methoden Namen sorgen meistens dafür, dass man Code wie einen Kommentar lesen kann."
       }
     }
   },
@@ -305,42 +492,42 @@
     "intro": "Weitere Anmerkung(en):",
     "options": {
       "==insteadOfEquals": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "== statt equals",
         "text": "- Verwende `.equals` statt `==` um Strings zu vergleichen."
       },
       "system.exit": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "System.exit",
         "text": "- Bitte kein `System.exit()` nutzen, unsere Tests mögen das nicht."
       },
       "misleadingErrorMessages": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Irreführende Fehlermeldungen",
         "text": "- Bitte achte darauf, dass deine Fehlermeldungen nicht \"falsch\" sind. Wenn du beispielsweise auf `args.length != 1` prüfst, deine Fehlermeldung aber *\"ERROR: Keine Argumente übergeben\"* lautet, bekommt der Nutzer die Fehlermeldung auch, wenn er 2 oder mehr Argumente übergibt. Das ist irreführend."
       },
       "blaError": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Nichts aussagende Fehlermeldung",
         "text": "- Bitte achte darauf, dass deine Fehlermeldungen etwas aussagen. Wenn du beispielsweise auf `args.length != 1` prüfst, deine Fehlermeldung aber *\"ERROR: Error\"* lautet, weiß der Nutzer nicht, was er falsch gemacht hat. (Ja, das mag nervig sein, aber es ist wichtig, das direkt zu üben und sich zu verinnerlichen.)"
       },
       "errorElseNester": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Fehler verschachtelt (mit else)",
         "text": "- Bitte beende dein Programm bei der Überprüfung der Nutzereingabe bei fehlerhafter Eingabe mit einem `return` und verwende keinen else Block für den eigentlichen Code. Bei vielen Fehlerüberprüfungen kann es sonst passieren, dass du ganz viele `else` Blöcke hast und der eigentliche Code ganz weit eingerückt ist. Also aus \n\n ```java\n if(args.length != 1){\n    ...\n} else {\n    // Der eigentliche Code\n}\n```\n\n wird \n\n```java\nif(args.length != 1){\n    ...\n    return;\n}\n// Der eigentliche Code\n```"
       },
       "stupidErrorElseNester": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Fehler verschachtelt (mit else) - trotz return",
         "text": "- Wenn du in der Fehlerüberprüfung `return` verwendest, kannst du den eigentlichen Code auch ohne `else` schreiben. Also aus \n\n ```java\n if(args.length != 1){\n    ...\n    return;\n}\nelse {\n    // Der eigentliche Code\n}\n```\n\n wird \n\n```java\nif(args.length != 1){\n    ...\n    return;\n}\n// Der eigentliche Code\n```"
       },
       "ErrorIfNester": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Fehler verschachtelt (mit if)",
         "text": "- Es ist oft sinnvoll, zuerst auf die Fehler zu überprüfen, und dann den eigentlichen Code auszuführen. Sonst kann es bei vielen Fehlerüberprüfungen passieren, dass du ganz viele verschachtelte if Blöcke hast und der eigentliche Code ganz weit eingerückt ist. Also aus \n\n ```java\n if(args.length > 0){\n    // Der eigentliche Code\n} else {\n    //Fehlermeldung\n}\n```\n\n wird \n\n```java\nif(args.length == 0){\n    //Fehlermeldung\n    return;\n}\n// Der eigentliche Code\n```"
       },
       ".class": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": ".class Datei hochgeladen",
         "text": "- Die .class Datein brauchen wir nicht, bitte nur die .java Datei hochladen."
       },
@@ -349,12 +536,12 @@
         "text": "- Lade bitte nur immer eine Datei (sofern nicht anders angegeben) hoch. Falls du mal eine falsche Datei hochlädst, lösche sie bitte wieder. [Wie das geht kannst du im Tutorial zum Abgabesystem nachlesen](https://hsp.pages.cs.uni-duesseldorf.de/programmierung/website/lectures/progra/tutorials/classroom/#falsch-hochgeladene-dateien-l%C3%B6schen)."
       },
       "scannerWithSystemInClosed": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "Scanner mit System.in geschlossen",
-        "text": "- An sich ist es richtig, dass wir einen Scanner schließen, das ist bei Java mit System.in aber ein Sonderfall: einen Scanner auf System.in wollen wir in Java meistens nie selber schließen: https://coderanch.com/wiki/678613/Don-close-Scanner-tied-System"
+        "text": "- An sich ist es richtig, dass wir einen Scanner schließen, das ist bei Java mit `System.in` aber ein Sonderfall: einen Scanner auf `System.in` wollen wir in Java meistens nie selber schließen: https://coderanch.com/wiki/678613/Don-close-Scanner-tied-System"
       },
       "errorStreamInsteadOfOut": {
-        "excluded": ["References"],
+        "excluded": ["References", "ListVSArray"],
         "label": "System.err statt System.out",
         "text": "- Bitte verwende `System.out` statt `System.err` für die Ausgabe. Unsere Tests prüfen nur `System.out`."
       },
@@ -370,6 +557,11 @@
       "lookIntoSolutionTutorium": {
         "label": "Musterlösung anschauen/Tutorium/Übungen besuchen",
         "text": "- Am besten guckst du mal in die Musterlösung und/oder besuchst das Tutorium. Wenn du nicht weiterkommst, zögere nicht, uns zu fragen (im Forum / in den Übungen oder im Tutorium), wir helfen gerne."
+      },
+      "multipleClassesInOneFile": {
+        "task": ["Resistor", "Racecar"],
+        "label": "Mehrere Klassen in einer Datei",
+        "text": "- Bitte nur eine Klasse/ein Interface pro Datei."
       }
     }
   }

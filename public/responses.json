@@ -331,6 +331,96 @@
         "task": "ListVSArray",
         "label": "ListVSArray: Angabe Falsch",
         "text": "- Deine Antwort ist leider Falsch. Hilmar sollte ein Array benutzen für den schnellen Zugriff und Lisa eine Liste für die Variable größe. Ein Array kann man nur beutzten, wenn man vorher die Größe der Daten schon kennt, da man es bei Laufzeit nicht mehr vergrößern kann. Dafür kann man schnell auf einzelne Indices zugreifen\nListen auf der anderen Seite können zwar \"beliebig\" wachsen (bis der Speicher voll läuft) aber man muss immer Stück für Stück durch die Liste durch, wenn man an einen bestimmten Index will. Daher ist sie zwar geeignet um Variable Datenmengen zu speichern, jedoch nicht um auf diese Effizient zuzugreifen"
+      },
+      "WidgetsNoVisual": {
+        "task": "Widgets",
+        "label": "Widgets: Fehlender Visueler Output",
+        "text": "- Leider wird bei deinem Programm kein Textfeld mit ausgegeben"
+      },
+      "WidgetsWrongVisual": {
+        "task": "Widgets",
+        "label": "Widgets: Visuelles != Vorlage",
+        "text": "- Die Ausgabe welche du erzeugt hast ist leider nicht nah genug an der Vorgabe dran"
+      },
+      "WidgetsOtherChanged": {
+        "task": "Widgets",
+        "label": "Widgets: Vorlage verändert",
+        "text": "- Du solltest den Code in den vorgegeben Dateien (Außer der Application.java) nicht abändern, sondern nur eine einzige eigene Klasse schreiben"
+      },
+      "WidgetsTextMissing": {
+        "task": "Widgets",
+        "label": "Widgets: keine Textabgabe",
+        "text": "- Du hast leider die Textaufgaben nicht bearbeitet"
+      },
+      "WidgetsNoSTDout": {
+        "task": "Widgets",
+        "label": "Widgets: Std Output fehlt",
+        "text": "- Das Programm sollte auf die Standardausgabe irgendwo \n`TextField(200x25),\nTextField(200x25){disabled},`\nstehen haben"
+      },
+      "WidgetsWrongPlainHead": {
+        "task": "Widgets",
+        "label": "Widgets: Plain Text Fehler",
+        "text": "\nBei deinen geschriebenen Aufgaben sind leider Fehler mit dabei. Hier die richtigen Musterantworten:"
+      },
+      "WidgetsWrongPlain1": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 1",
+        "text": "* (1) 5 Klassen erben von Widget. Davon direkt `Button`, `Label` und `Layout`. Indirekt über `Layout` erben `VerticalLayout` und `HorizontalLayout`"
+      },
+      "WidgetsWrongPlain2": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 2",
+        "text": "* (2) Die Konstruktoren der Unterklassen rufen (ggf. automatisch) einen Konstruktor der Oberklasse auf. In der Regel über `super()` Also wird z. B. auch durch new `VerticalLayout()` der `Widget`-Konstruktor aufgerufen"
+      },
+      "WidgetsWrongPlain3": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 3",
+        "text": "* (3) Layout ist eine Oberklasse von `VerticalLayout`. Gemäß den Regeln für Polymorphie kann ein `VerticalLayout` auch einer Variablen mit Obertyp (`Layout`) zugewiesen werden."
+      },
+      "WidgetsWrongPlain4": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 4",
+        "text": "* (4) Es gibt eine add Methode, die ein (beliebiges) Widget nimmt. Da `Labels` auch `Widgets` sind (Polymorphie), funktioniert der Aufruf."
+      },
+      "WidgetsWrongPlain5": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 5",
+        "text": "* (5) final ist nur der Inhalt der Variablen `widgets`, also die Referenz. Die referenzierten Heap-Daten können trotzdem verändert werden. Es ist aber nicht möglich, `widgets` auf eine andere Liste zeigen zu lassen, dafür kann man Elemente einfügen, löschen, etc."
+      },
+      "WidgetsWrongPlain6": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 6",
+        "text": "* (6) Auf einer Variable können nur Methoden aufgerufen werden, die zum Datentyp gehören, mit dem die Variable deklariert wurde, unabhängig davon, welchen Typ das gerade in der Variable gespeicherte Objekt hat."
+      },
+      "WidgetsWrongPlain7": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 7",
+        "text": "* (7) enabled ist in der Oberklasse `privat` und kann deshalb in den Unterklassen nicht benutzt werden. (Hinweis: Jede `Button`-Instanz hat trotzdem das Feld `enabled`, wir können es nur nicht direkt in der Klasse verändern oder lesen.)"
+      },
+      "WidgetsWrongPlain8": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 8",
+        "text": "* (8) Die Klasse enthält eine abstrakte Methode (also eine Methode ohne Implementierung) und muss deshalb als abstrakt deklariert werden."
+      },
+      "WidgetsWrongPlain9": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 9",
+        "text": "* (9) Die `toString`-Methode von `Object` wird überschrieben, da ausnahmslos jede Klasse in Java von der Klasse `Object` erbt"
+      },
+      "WidgetsWrongPlain10": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 10",
+        "text": "* (10) `getWidth()` muss in abgeleiteten, nicht-abstrakten Klassen überschrieben werden. Da nur von nicht-abstrakten Klassen Instanzen erzeugt werden können, ist sichergestellt, dass zur Laufzeit eine Implementierung von `getWidth()` vorhanden ist."
+      },
+      "WidgetsWrongPlain11": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 11",
+        "text": "* (11) `Layout` erbt abstrakte Methoden von `Widget` ."
+      },
+      "WidgetsWrongPlain12": {
+        "task": "Widgets",
+        "label": "Widgets: Plain 12",
+        "text": "* (12) Eine möglichkeit das in einem If-Statement zu verpacken wäre:\n```java\nif(isEnabled()){\n\tStdDraw.setPenColor(StdDraw.BLACK);\n} else {\n\tStdDraw.setPenColor(StdDraw.GRAY);\n}\n```"
       }
     }
   },
