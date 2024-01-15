@@ -29,6 +29,11 @@
     ],
     "Blatt 11": [
       "Widgets"
+    ],
+    "Blatt 12": [
+      "Bughunt-Generics",
+      "Matrixmultiplikation",
+      "Widgetsuper"
     ]
   },
   "quality": {
@@ -421,7 +426,53 @@
         "task": "Widgets",
         "label": "Widgets: Plain 12",
         "text": "* (12) Eine möglichkeit das in einem If-Statement zu verpacken wäre:\n```java\nif(isEnabled()){\n\tStdDraw.setPenColor(StdDraw.BLACK);\n} else {\n\tStdDraw.setPenColor(StdDraw.GRAY);\n}\n```"
+      },
+      "WidgetsSuperNoVisual": {
+        "task": "Widgetsuper",
+        "label": "Widgetsuper: Fehlender Visueler Output",
+        "text": "- Leider wird bei deinem Programm kein Textfeld mit ausgegeben"
+      },
+      "WidgetsSuperWrongVisual": {
+        "task": "Widgetsuper",
+        "label": "Widgetsuper: Visuelles != Vorlage",
+        "text": "- Die Ausgabe welche du erzeugt hast ist leider nicht nah genug an der Vorgabe dran"
+      },
+      "WidgetsSuperInstanceField": {
+        "task": "Widgetsuper",
+        "label": "Widgetsuper: Instance Field",
+        "text": "- Du solltest in der Klasse kein neues Feld anlegen, da der Text selbst ja schon in der Oberklasse gespeichert wird"
+      },
+      "WidgetsSuperOtherChanged": {
+        "task": "Widgetsuper",
+        "label": "Widgetsuper: Vorlage verändert",
+        "text": "- Du solltest den Code in den vorgegeben Dateien (Außer der UnderlinedLable.java) nicht abändern, sondern nur eine einzige eigene Klasse schreiben"
+      },
+      "WidgetsSuperNoSTDout": {
+        "task": "Widgetsuper",
+        "label": "Widgetsuper: Std Output fehlt",
+        "text": "- Das Programm sollte auf die Standardausgabe irgendwo \n`TextField(200x25),\nTextField(200x25){disabled},`\nstehen haben"
+      },
+      "MatrixmulWrongCalc": {
+        "task": "Matrixmultiplikation",
+        "label": "Matrixmul: Berechnung falsch",
+        "text": "- Deine Multiplikationsberechnung ist leider Falsch"
+      },
+      "MatrixmulPublicVar": {
+        "task": "Matrixmultiplikation",
+        "label": "Matrixmul: Var nicht private",
+        "text": "- deine Variable für das Array sollte private sein"
+      },
+      "MatrixmulWrongErrorHandling": {
+        "task": "Matrixmultiplikation",
+        "label": "Matrixmul: Errorhandling falsch",
+        "text": "- Du fängst leider die Fehler nicht richtig ab"
+      },
+      "MatrixmulWrongConstructor": {
+        "task": "Matrixmultiplikation",
+        "label": "Matrixmul: Konstruktor falsch",
+        "text": "- Dein Konstruktor arbeitet nicht wie vorgegeben"
       }
+
     }
   },
   "syntaxErrors": {
@@ -485,6 +536,11 @@
         "excluded": ["References", "ListVSArray"],
         "label": "Beschreibende Kommentare",
         "text": "- Es ist sehr vorbildlich, ausführlich Kommentare zu schreiben. Allerdings solltest du dabei weniger beschreiben, was du tust (das kann man ja am Code ablesen), sondern eher warum du etwas tust. Natürlich ist es manchmal auch sinnvoll das was zu beschreiben, immer dann, wenn der Code das nicht mit einem Blick hergibt. Gute Variablen/Klassen/Methoden Namen sorgen meistens dafür, dass man Code wie einen Kommentar lesen kann."
+      },
+      "wrongMethodName": {
+        "excluded": ["References", "ListVSArray"],
+        "label": "Methodenname falsch",
+        "text": "- Es ist wichtig, vorallem für unsere Tests, dass du dich wirklich an die vorgegebenen Methodennamen hälst. Auch wenn es an manchen Stellen hier etwas banal klingt ist es vor allem später unglaublich wichtig sich wirklich an die Vorgaben zu halten, wie ein Programm arbeitet und wie es eine Schnittstelle angibt. Allerspätestens wenn man mit mehreren Personen arbeitet."
       }
     }
   },
