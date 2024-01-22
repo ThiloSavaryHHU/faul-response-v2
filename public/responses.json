@@ -34,6 +34,11 @@
       "Bughunt-Generics",
       "Matrixmultiplikation",
       "Widgetsuper"
+    ],
+    "Blatt 13": [
+      "Bin-Tree",
+      "MessageSystem",
+      "Minicalculator"
     ]
   },
   "quality": {
@@ -471,7 +476,28 @@
         "task": "Matrixmultiplikation",
         "label": "Matrixmul: Konstruktor falsch",
         "text": "- Dein Konstruktor arbeitet nicht wie vorgegeben"
+      },
+      "BintreeNotRecursive": {
+        "task": "Bin-Tree",
+        "label": "Bin-Tree: Not Recursive",
+        "text": "- Es war von der Aufgabenstellung klar gefordert dass das Maximum einmal Iterativ (mit Schleifen) und einmal Rekursive (Funktion ruft sich selber auf) gesucht werden soll. Leider hast du keine Rekursive Implementierung gemacht"
+      },
+      "BintreeNotIterative": {
+        "task": "Bin-Tree",
+        "label": "Bin-Tree: Not Iterative",
+        "text": "- Es war von der Aufgabenstellung klar gefordert dass das Maximum einmal Iterativ (mit Schleifen) und einmal Rekursive (Funktion ruft sich selber auf) gesucht werden soll. Leider hast du keine Iterative Implementierung gemacht"
+      }, 
+      "MessSys--": {
+        "task": "MessageSystem",
+        "label": "MessageSystem: --- ",
+        "text": "- ---"
+      }, 
+      "CalculatorNoSwitch": {
+        "task": "Minicalculator",
+        "label": "Minicalculator: No Switch",
+        "text": "- Hier hätte sich eine switch-case Struktur sehr angeboten. Das macht den Code etwas übersichtlicher und einfacher erweiterbar"
       }
+
 
     }
   },
@@ -588,6 +614,7 @@
         "text": "- Die .class Datein brauchen wir nicht, bitte nur die .java Datei hochladen."
       },
       "onlyOneFile": {
+        "excluded": ["Resistor", "Racecar", "MessageSystem"],
         "label": "Nur eine Datei",
         "text": "- Lade bitte nur immer eine Datei (sofern nicht anders angegeben) hoch. Falls du mal eine falsche Datei hochlädst, lösche sie bitte wieder. [Wie das geht kannst du im Tutorial zum Abgabesystem nachlesen](https://hsp.pages.cs.uni-duesseldorf.de/programmierung/website/lectures/progra/tutorials/classroom/#falsch-hochgeladene-dateien-l%C3%B6schen)."
       },
