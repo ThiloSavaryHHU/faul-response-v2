@@ -22,23 +22,22 @@ This will start a local server that can be reached at `http://localhost:5173/`.[
 
 **Requirements:**
 
-- Any web server (e.g. Apache, php)
+- Any web server
 
 1. download release
 2. unpack
 3. start web server
 
-With php:
+Example with python:
 
 ```bash
 cd /path/to/unpacked/release
-php -S localhost:5173 -t
+python -m http.server 8000 --bind localhost
 ```
 
-With Apache:
+Big list of http static server one-liners: 
+https://gist.github.com/willurd/5720255
 
-- Copy files to the web server folder
-- Start server
 
 ## Usage
 
